@@ -1,0 +1,18 @@
+body, html {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%; }
+
+.main-wrap {
+  margin-top: 50px; }
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important; }
+
+a {
+  cursor: pointer !important; }
+
+.header {
+  padding: 12% 0; }

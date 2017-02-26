@@ -1,0 +1,26 @@
+{
+  "name": "finalProject",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "angular": "angularjs#^1.6.2",
+    "angular-ui-router": "ui-router#^0.4.2",
+    "jasny-bootstrap": "^3.1.3",
+    "font-awesome": "^4.7.0",
+    "angular-bootstrap": "^2.5.0",
+    "angular-animate": "^1.6.2",
+    "async": "^2.1.5"
+  }
+}

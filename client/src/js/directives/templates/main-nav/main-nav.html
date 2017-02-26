@@ -1,0 +1,233 @@
+<nav>
+    <!-- Mobile Side Nav -->
+    <div id="mobile-side-nav" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+        <div class="list-group">
+            <!-- Unauthenticated Dropdown -->
+            <div ng-if="!CurrentUser" id="unauth-mobile-side-nav" class="mobile-side-auth-items">
+                <a ng-click="toggleGettingStarted()" class="text-center list-group-item">
+                    Getting Started <span class="caret"></span>
+                </a>
+                <div ng-if="showGettingStarted" class="text-center list-group-item">
+                    <a ng-click="closeMobileSideNav() && openRegisterAccountModal()"><i class="glyphicon glyphicon-hand-up"></i> &nbsp;Sign Up</a>
+                </div>
+                <div ng-if="showGettingStarted" class="text-center list-group-item">
+                    <a ng-click="closeMobileSideNav() && openLoginModal()"><i class="glyphicon glyphicon-log-in"></i> &nbsp;Log In</a>
+                </div>
+            </div>
+            <!-- End /Unauthenticated Dropdown -->
+
+            <!-- Authenticated Dropdown -->
+            <div ng-if="CurrentUser" id="auth-mobile-side-nav" class="mobile-side-auth-items">
+                <a ng-click="toggleAccountOptions()" class="text-center list-group-item">
+                    {{CurrentUser.username}} <span class="caret"></span>
+                </a>
+                <div ng-if="showAccountOptions" class="text-center list-group-item">
+                    <a ng-click="logOut()"><i class="glyphicon glyphicon-log-out"></i> &nbsp;Log Out</a>
+                </div>
+            </div>
+            <!-- Authenticated Dropdown -->
+
+            <!-- Mobile Nav Links -->
+            <a ui-sref="app.home" class="text-center list-group-item" ng-class="{ active: $state.includes('home') }">
+                <i class="fa fa-fw fa-home"></i> &nbsp; Home
+            </a>
+            <a ui-sref="app.about" class="text-center list-group-item" ng-class="{ active: $state.includes('about') }">
+                <i class="fa fa-fw fa-home"></i> &nbsp; About
+            </a>
+            <a ui-sref="app.services" class="text-center list-group-item" ng-class="{ active: $state.includes('services') }">
+                <i class="fa fa-fw fa-home"></i> &nbsp; Services
+            </a>
+            <a ui-sref="app.contact" class="text-center list-group-item" ng-class="{ active: $state.includes('contact') }">
+                <i class="fa fa-fw fa-home"></i> &nbsp; Contact
+            </a>
+            <!-- End \Mobile Nav Links -->
+        </div>
+    </div>
+    <!-- End \Mobile Side Nav -->
+
+    <!-- Top Nav Bar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Toggle Mobile Side Menu Button -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="offcanvas" 
+                    data-target="#mobile-side-nav" data-canvas="body">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" ui-sref="app.home">                 
+                    <span class="logo">   
+                        <img alt="logo" src="/assets/img/logo.png">
+                    </span>
+                    <span class="logo-brand">
+                        <h2>Web Services</h2>
+                    </span>
+                </a>
+            </div>
+            <!-- End \Toggle Mobile Side Menu Button -->
+
+            <!-- Desktop Nav Links -->
+            <div class="collapse navbar-collapse" id="nav-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ui-sref="app.home">Home</a></li>
+                    <li><a ui-sref="app.about">About</a></li>
+                    <li><a ui-sref="app.services">Services</a></li>
+                    <li><a ui-sref="app.contact">Contact</a></li>
+
+                    <!-- Unauthenticated Desktop Dropdown -->
+                    <li ng-if="CurrentUser" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{CurrentUser.username}}  <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="logOut()"><i class="glyphicon glyphicon-log-out"></i> &nbsp;Log Out</a></li>
+                        </ul>
+                    </li>
+                    <!-- End \Unauthenticated Desktop Dropdown -->
+
+                    <!-- Authenticated Desktop Dropdown -->
+                    <li ng-if="!CurrentUser" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get Started  <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="openRegisterAccountModal()"><i class="glyphicon glyphicon-hand-up"></i> &nbsp;Sign Up</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-click="openLoginModal()"><i class="glyphicon glyphicon-log-in"></i> &nbsp;Log In</a></li>
+                        </ul>
+                    </li>
+                    <!-- End \Authenticated Desktop Dropdown -->
+                </ul>
+            </div>
+            <!-- End \Desktop Nav Links -->
+
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- End \Top Nav Bar -->
+
+    <!-- Register Account Modal -->
+    <script type="text/ng-template" id="register-account-modal.html">
+        <div class="modal-header">
+            <h3 class="modal-title text-center" id="modal-title">Account Sign Up Form</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+
+            <!-- alert-box -->
+            <alert-box theme="default"></alert-box>
+            <!-- /end alert-box -->
+
+            <!-- Sign Up Form -->
+            <form 
+                id="signUpForm" 
+                name="signUpForm"
+                ng-submit="submitSignUpForm()"
+                novalidate>
+
+                <div class="form-group">
+                    <label for="userName">Username</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="userName" 
+                        name="userName" 
+                        placeholder="Username" 
+                        ng-model="newUser.username"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="userEmail" 
+                        name="userEmail" 
+                        placeholder="Email" 
+                        ng-model="newUser.email"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="userPass">Password</label>
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        id="userPass" 
+                        name="userPass" 
+                        placeholder="Password" 
+                        ng-model="newUser.pass"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="userConfirmPass">Confirm Password</label>
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        id="userConfirmPass"
+                        name="userConfirmPass" 
+                        placeholder="Confirm Password" 
+                        ng-model="newUser.cPass"
+                        required>
+                </div>
+            </form>
+            <!-- End \Sign Up Form -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" type="button" ng-click="closeModal()">Cancel</button>
+            <button class="btn btn-primary" form="signUpForm" type="submit">
+                <span ng-if="!signupSubmit">Submit</span>
+                <span ng-if="signupSubmit">Submitting</span>
+            </button>
+        </div>
+    </script>
+    <!-- End \Register Account Modal -->
+
+    <!-- Login Modal -->
+    <script type="text/ng-template" id="login-modal.html">
+        <div class="modal-header">
+            <h3 class="modal-title text-center" id="modal-title">Login Form</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+
+            <!-- alert-box -->
+            <alert-box theme="default"></alert-box>
+            <!-- /end alert-box -->
+
+            <!-- Login Form -->
+            <form 
+                id="loginForm" 
+                name="loginForm"
+                ng-submit="submitLoginForm()"
+                novalidate>
+
+                <div class="form-group">
+                    <label for="existingUserOrEmail">Username or Email</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="existingUserOrEmail" 
+                        name="existingUserOrEmail" 
+                        placeholder="Username or email" 
+                        ng-model="existingUser.usernameOrEmail"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="userPass">Password</label>
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        id="existingPass" 
+                        name="existingPass" 
+                        placeholder="Password" 
+                        ng-model="existingUser.pass"
+                        required>
+                </div>
+            </form>
+            <!-- End /Login Form -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" type="button" ng-click="AlertService.reset() && closeModal()">Cancel</button>
+            <button class="btn btn-primary" form="loginForm" type="submit">
+                <span ng-if="!loginSubmit">Submit</span>
+                <span ng-if="loginSubmit"><i class="fa fa-spin fa-spinner"></i> &nbsp;Submitting</span>
+            </button>
+        </div>
+    </script>
+    <!-- End \Login  Modal -->
+</nav>
