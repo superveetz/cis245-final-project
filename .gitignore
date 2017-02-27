@@ -1,3 +1,4 @@
 node_modules/
 vendor/
 client/src/bower_components
+client/src/themes/
