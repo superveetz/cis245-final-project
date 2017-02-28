@@ -24,9 +24,7 @@ a {
 }
 
 .scroll-disabled {
-  height: 100%;
-  overflow: hidden !important;
-  position: fixed;
+  touch-action: none;
 }
 .navbar-brand {
   font-size: 1.75em;

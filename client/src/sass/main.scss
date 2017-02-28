@@ -23,7 +23,5 @@ a {
 }
 
 .scroll-disabled {
-  height: 100%;
-  overflow: hidden !important;
-  position: fixed;
+  touch-action: none
 }

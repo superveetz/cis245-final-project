@@ -27,5 +27,27 @@
                 scope.AlertService = AlertService;
             }
         };
+    }])
+    
+    .directive('scrollDisabled', ['$window', function ($window) {
+        return {
+            restrict: 'A',
+            link: function (scope, elem) {
+
+                elem.on('show.bs.offcanvas', function () {
+                    elem.addClass('scroll-disabled');
+                    elem.ontouchmove = function(event){
+                        event.preventDefault();
+                    }
+                });
+
+                elem.on('hide.bs.offcanvas', function () {
+                    elem.removeClass('scroll-disabled');
+                    elem.ontouchmove = function(event){
+                        return true;
+                    }
+                });
+            }
+        };
     }]);
 })(angular);

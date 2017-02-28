@@ -5,29 +5,12 @@
 
     .service('MobileSideNavService', ['$timeout', function ($timeout) {
         let mobileNav = {
-            isOpen: false
+            isOpen: true
         };
 
         return {
-            isOpen: function () {
-                if ($('#mobile-side-nav').hasClass('in')) {
-                    mobileNav.isOpen = true;
-                    document.ontouchmove = () => { 
-                        e.preventDefault(); 
-                    }
-                } else {
-                    mobileNav.isOpen = false;
-                    document.ontouchmove = () => { 
-                        return true;
-                    }
-                }
-
-                return mobileNav.isOpen
-            },
-
-            setIsOpen: function (value) {
-                mobileNav.isOpen = value;
-            }
+            disableScrolling: function () {},
+            enableScrolling: function () {}
         };
     }])
     

@@ -10,15 +10,12 @@
         'app.services'
     ])
 
-    .run(['$rootScope', '$state', '$window', 'MobileSideNavService', function ($rootScope, $state, $window, MobileSideNavService) {
+    .run(['$rootScope', '$state', '$window', function ($rootScope, $state, $window) {
         // attach $state static app data
         $rootScope.$state = $state;
         
         // store Current User static app data
         $rootScope.CurrentUser = undefined;
-
-        // variable to determine if mobile side nav is open or not
-        $rootScope.MobileSideNavIsOpen = MobileSideNavService;
 
         // hook into onStateChangeStart event
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
@@ -29,7 +26,6 @@
         // hook into onStateChangeSuccess event
         $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
             // ensure scrolling is enabled
-            MobileSideNavService.setIsOpen(false);
         });
     }])
 
