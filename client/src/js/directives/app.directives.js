@@ -29,11 +29,13 @@
         };
     }])
     
-    .directive('scrollDisabled', ['$timeout', function ($timeout) {
+    .directive('scrollDisabled', ['$window', '$timeout', function ($window, $timeout) {
         return {
             restrict: 'A',
             link: function (scope, elem) {
 
+                let window = angular.element($window);
+                
                 elem.on('show.bs.offcanvas', function () {
                     let body = document.getElementsByTagName('body')[0];
                     let html = document.getElementsByTagName('html')[0];
@@ -43,7 +45,7 @@
                     bodyElem.addClass('body-scroll-disabled');
                     htmlElem.addClass('html-scroll-disabled');
                     $timeout(() => {
-                        bodyElem.ontouchmove = function(event){
+                        bodyElem.ontouchmove = function(event) {
                             event.preventDefault();
                         }
                     }, 300);
@@ -56,9 +58,10 @@
                     let htmlElem = angular.element(html);
 
                     $timeout(() => {
+                        window.scrollTop(400);
                         bodyElem.removeClass('body-scroll-disabled');
                         htmlElem.removeClass('html-scroll-disabled');
-                        bodyElem.ontouchmove = function(event){
+                        bodyElem.ontouchmove = function(event) {
                             return true;
                         }
                     }, 300);

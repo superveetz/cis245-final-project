@@ -16,6 +16,12 @@ html.html-scroll-disabled {
   border: none;
 }
 
+#app {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .nopadding {
   padding: 0 !important;
   margin: 0 !important;
