@@ -34,19 +34,19 @@
             restrict: 'A',
             link: function (scope, elem) {
 
-                elem.on('show.bs.offcanvas', function () {
-                    elem.addClass('scroll-disabled');
-                    document.ontouchmove = function(event){
-                        event.preventDefault();
-                    }
-                });
+                // elem.on('show.bs.offcanvas', function () {
+                //     elem.addClass('scroll-disabled');
+                //     document.ontouchmove = function(event){
+                //         event.preventDefault();
+                //     }
+                // });
 
-                elem.on('hide.bs.offcanvas', function () {
-                    elem.removeClass('scroll-disabled');
-                    document.ontouchmove = function(event){
-                        return true;
-                    }
-                });
+                // elem.on('hide.bs.offcanvas', function () {
+                //     elem.removeClass('scroll-disabled');
+                //     document.ontouchmove = function(event){
+                //         return true;
+                //     }
+                // });
             }
         };
     }]);
