@@ -1,5 +1,5 @@
 {
-  "name": "finalProject",
+  "name": "final-project",
   "description": "",
   "main": "",
   "license": "MIT",
@@ -21,6 +21,7 @@
     "font-awesome": "^4.7.0",
     "angular-bootstrap": "^2.5.0",
     "angular-animate": "^1.6.2",
-    "async": "^2.1.5"
+    "async": "^2.1.5",
+    "angular-ui-validate": "^1.2.2"
   }
 }
