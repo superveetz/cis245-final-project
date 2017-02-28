@@ -1,17 +1,35 @@
 (function (angular) {
     angular.module('app.controllers', [])
     
-    .controller('MainNavCtrl', ['$rootScope', '$scope', '$http', '$window', '$state', 'ModalService', 'AlertService', function ($rootScope, $scope, $http, $window, $state, ModalService, AlertService) {
+    .controller('MainNavCtrl', ['$rootScope', '$scope', '$http', '$window', '$state', '$timeout', 'ModalService', 'AlertService', function ($rootScope, $scope, $http, $window, $state, $timeout, ModalService, AlertService) {
         // open register account modal
-        $scope.openRegisterAccountModal = function () {
+        $scope.openRegisterAccountModal = function (closeMobileNav) {
             AlertService.reset();
-            ModalService.openRegisterAccountModal();
+
+            if (closeMobileNav) {
+                $scope.closeMobileSideNav();
+                // wait for mobile side nav to close, then open modal
+                $timeout(() => {
+                    ModalService.openRegisterAccountModal();
+                }, 300);
+            } else {
+                ModalService.openRegisterAccountModal();
+            }
         };
 
         // open login modal
-        $scope.openLoginModal = function () {
+        $scope.openLoginModal = function (closeMobileNav) {
             AlertService.reset();
-            ModalService.openLoginModal();
+            
+            if (closeMobileNav) {
+                $scope.closeMobileSideNav();
+                // wait for mobile side nav to close, then open modal
+                $timeout(() => {
+                    ModalService.openLoginModal();
+                }, 300);
+            } else {
+                ModalService.openLoginModal();
+            }
         };
 
         // toggle mobile getting started
@@ -57,56 +75,36 @@
 
         // submit sign up form
         $scope.submitSignUpForm = function () {
-            // separate form submission into sequential steps
+            // turn on loading spinner
             $scope.signupSubmit = true;
-            async.series([
-                 (seriesCB) => {
-                    // validate form
-                    if (!$scope.newUser.username)                        return seriesCB('Username is required');
-                    else if (!$scope.newUser.email)                      return seriesCB('Email is required');
-                    else if ($scope.newUser.email.indexOf('@') === -1 ||
-                             $scope.newUser.email.indexOf('.') === -1 ||
-                             $scope.newUser.email.indexOf('.') - $scope.newUser.email.indexOf('@') === 1 ||
-                             $scope.newUser.email.length-1 === $scope.newUser.email.indexOf('.')) 
-                                return seriesCB('Email is an invalid format');
-                    
-                    else if ($scope.newUser.pass !== $scope.newUser.cPass)      return seriesCB('Passord and confirm password fields do not match');
-                    else if ($scope.newUser.pass.length < 8)                    return seriesCB('Password must be at least 8 characters long');
-                    else 
-                        return seriesCB();
 
-                },
-                 (seriesCB) => {
-                    // POST submit
-                    $http({
-                        method: 'POST',
-                        url: '/api/users/register-new',
-                        data: $scope.newUser
-                    })
-                    .then(response => {
-                        // store authenticated user data
-                        $rootScope.CurrentUser = response.data;
-                        return seriesCB();
-                    })
-                    .catch(err => {
-                        return seriesCB(err);
-                    });
-                }
-            ], (err) => {
+            // make POST request
+            $http({
+                method: 'POST',
+                url: '/api/users/register-new',
+                data: $scope.newUser
+            })
+            .then(response => {
+                // success
                 $scope.signupSubmit = false;
-                
-                if (err) {
-                    AlertService.setAlert({
-                        show: true,
-                        type: 'error',
-                        title: err,
-                        slimErr: err.data ? err : undefined
-                    });
-                } else {
-                    $window.scrollTo(0, 0);
-                    $scope.closeModal();
-                }
+                $rootScope.CurrentUser = response.data;
+                $scope.closeModal();
+            })
+            .catch(err => {
+                // error
+                $scope.signupSubmit = false;
+                AlertService.setAlert({
+                    show: true,
+                    type: 'error',
+                    title: err,
+                    slimErr: err.data ? err : undefined
+                });
             });
+        };
+
+        // validate confirm password matches password
+        $scope.isPassConfirmed = function (confirmPass) {
+            return confirmPass.signUpForm.userPass.$$rawModelValue === confirmPass.signUpForm.userConfirmPass.$$rawModelValue;
         };
 
         // close modal
@@ -124,52 +122,33 @@
         
         // init defaults
         $scope.existingUser     = angular.copy(dExistingUser);
-        $scope.AlertService     = AlertService;
 
         // submit log in form
         $scope.submitLoginForm = function () {
+            // turn on loading spinner
             $scope.loginSubmit = true;
-            
-            async.series([
-                (seriesCB) => {
-                    // validate form
-                    if (!$scope.existingUser.usernameOrEmail)    return seriesCB('Username or email is required');
-                    else if (!$scope.existingUser.pass)          return seriesCB('Password is required');
-                    else 
-                        return seriesCB();
-                },
-                (seriesCB) => {
-                    // POST login request
-                    $http({
-                        method: 'POST',
-                        url: '/api/users/login',
-                        data: $scope.existingUser
-                    })
-                    .then(response => {
-                        // store authenticated user data
-                        $rootScope.CurrentUser = response.data;
-                        return seriesCB();
-                    })
-                    .catch(err => {
-                        return seriesCB(err);
-                    });
-                }
-            ], (err) => {
-                $scope.loginSubmit = false;
 
-                if (err) {
-                    AlertService.setAlert({
-                        show: true,
-                        type: 'error',
-                        title: err,
-                        slimErr: err.data ? err : undefined
-                    });
-                } else {
-                    $window.scrollTo(0, 0);
-                    $scope.closeModal();
-                }
+            $http({
+                method: 'POST',
+                url: '/api/users/login',
+                data: $scope.existingUser
+            })
+            .then(response => {
+                // success
+                $scope.loginSubmit = false;
+                $rootScope.CurrentUser = response.data;
+                $scope.closeModal();
+            })
+            .catch(err => {
+                // error
+                $scope.loginSubmit = false;
+                AlertService.setAlert({
+                    show: true,
+                    type: 'error',
+                    title: err,
+                    slimErr: err.data ? err : undefined
+                });
             });
-            
         };
 
         // close modal

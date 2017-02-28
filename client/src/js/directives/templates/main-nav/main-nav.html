@@ -5,13 +5,13 @@
             <!-- Unauthenticated Dropdown -->
             <div ng-if="!CurrentUser" id="unauth-mobile-side-nav" class="mobile-side-auth-items">
                 <a ng-click="toggleGettingStarted()" class="text-center list-group-item">
-                    Getting Started <span class="caret"></span>
+                    Get Started <span class="caret"></span>
                 </a>
-                <div ng-if="showGettingStarted" class="text-center list-group-item">
-                    <a ng-click="closeMobileSideNav() && openRegisterAccountModal()"><i class="glyphicon glyphicon-hand-up"></i> &nbsp;Sign Up</a>
+                <div ng-if="showGettingStarted">
+                    <a ng-click="openRegisterAccountModal(true)" class="list-group-item text-center"><i class="glyphicon glyphicon-hand-up"></i> &nbsp;Sign Up</a>
                 </div>
-                <div ng-if="showGettingStarted" class="text-center list-group-item">
-                    <a ng-click="closeMobileSideNav() && openLoginModal()"><i class="glyphicon glyphicon-log-in"></i> &nbsp;Log In</a>
+                <div ng-if="showGettingStarted">
+                    <a ng-click="openLoginModal(true)" class="list-group-item text-center"><i class="glyphicon glyphicon-log-in"></i> &nbsp;Log In</a>
                 </div>
             </div>
             <!-- End /Unauthenticated Dropdown -->
@@ -28,16 +28,16 @@
             <!-- Authenticated Dropdown -->
 
             <!-- Mobile Nav Links -->
-            <a ui-sref="app.home" class="text-center list-group-item" ng-class="{ active: $state.includes('home') }">
+            <a ui-sref="app.home" ng-click="closeMobileSideNav()" class="text-center list-group-item" ng-class="{ active: $state.includes('app.home') }">
                 <i class="fa fa-fw fa-home"></i> &nbsp; Home
             </a>
-            <a ui-sref="app.about" class="text-center list-group-item" ng-class="{ active: $state.includes('about') }">
+            <a ui-sref="app.about" ng-click="closeMobileSideNav()" class="text-center list-group-item" ng-class="{ active: $state.includes('app.about') }">
                 <i class="fa fa-fw fa-home"></i> &nbsp; About
             </a>
-            <a ui-sref="app.services" class="text-center list-group-item" ng-class="{ active: $state.includes('services') }">
+            <a ui-sref="app.services" ng-click="closeMobileSideNav()" class="text-center list-group-item" ng-class="{ active: $state.includes('app.services') }">
                 <i class="fa fa-fw fa-home"></i> &nbsp; Services
             </a>
-            <a ui-sref="app.contact" class="text-center list-group-item" ng-class="{ active: $state.includes('contact') }">
+            <a ui-sref="app.contact" ng-click="closeMobileSideNav()" class="text-center list-group-item" ng-class="{ active: $state.includes('app.contact') }">
                 <i class="fa fa-fw fa-home"></i> &nbsp; Contact
             </a>
             <!-- End \Mobile Nav Links -->
@@ -71,10 +71,10 @@
             <!-- Desktop Nav Links -->
             <div class="collapse navbar-collapse" id="nav-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a ui-sref="app.home">Home</a></li>
-                    <li><a ui-sref="app.about">About</a></li>
-                    <li><a ui-sref="app.services">Services</a></li>
-                    <li><a ui-sref="app.contact">Contact</a></li>
+                    <li ng-class="{ active: $state.includes('app.home') }"><a ui-sref="app.home">Home</a></li>
+                    <li ng-class="{ active: $state.includes('app.about') }"><a ui-sref="app.about">About</a></li>
+                    <li ng-class="{ active: $state.includes('app.services') }"><a ui-sref="app.services">Services</a></li>
+                    <li ng-class="{ active: $state.includes('app.contact') }"><a ui-sref="app.contact">Contact</a></li>
 
                     <!-- Unauthenticated Desktop Dropdown -->
                     <li ng-if="CurrentUser" class="dropdown">
@@ -116,54 +116,79 @@
 
             <!-- Sign Up Form -->
             <form 
+                class="form-horizontal"
                 id="signUpForm" 
                 name="signUpForm"
-                ng-submit="submitSignUpForm()"
+                ng-submit="signUpForm.$valid && submitSignUpForm()"
                 novalidate>
 
-                <div class="form-group">
-                    <label for="userName">Username</label>
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        id="userName" 
-                        name="userName" 
-                        placeholder="Username" 
-                        ng-model="newUser.username"
-                        required>
+                <div class="form-group" ng-class="{ 'has-error'   : signUpForm.userName.$invalid && signUpForm.$submitted,
+                                                    'has-success' : signUpForm.userName.$valid && signUpForm.$submitted }">
+                    <label for="userName" class="col-sm-3 control-label">Username</label>
+                    <div class="col-sm-9">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="userName" 
+                            name="userName" 
+                            placeholder="Username" 
+                            ng-model="newUser.username"
+                            ng-minlength="3"
+                            ng-maxlength="8"
+                            required>
+                            <p ng-if="signUpForm.$submitted && signUpForm.userName.$error.required" class="help-block">Username required.</p>
+                            <p ng-if="signUpForm.$submitted && signUpForm.userName.$error.minlength" class="help-block">Username is too short.</p>
+                            <p ng-if="signUpForm.$submitted && signUpForm.userName.$error.maxlength" class="help-block">Username is too long.</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="userEmail">Email</label>
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        id="userEmail" 
-                        name="userEmail" 
-                        placeholder="Email" 
-                        ng-model="newUser.email"
-                        required>
+                <div class="form-group" ng-class="{ 'has-error'   : signUpForm.userEmail.$invalid && signUpForm.$submitted,
+                                                    'has-success' : signUpForm.userEmail.$valid && signUpForm.$submitted }">
+                    <label for="userEmail" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input 
+                            type="email" 
+                            class="form-control" 
+                            id="userEmail" 
+                            name="userEmail" 
+                            placeholder="Email" 
+                            ng-model="newUser.email"
+                            required>
+                            <p ng-if="signUpForm.$submitted && signUpForm.userEmail.$invalid" class="help-block">Email must contain an @ sign to be valid.</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="userPass">Password</label>
-                    <input 
-                        type="password" 
-                        class="form-control" 
-                        id="userPass" 
-                        name="userPass" 
-                        placeholder="Password" 
-                        ng-model="newUser.pass"
-                        required>
+                <div class="form-group" ng-class="{ 'has-error'   : signUpForm.userPass.$invalid && signUpForm.$submitted,
+                                                    'has-success' : signUpForm.userPass.$valid && signUpForm.$submitted }">
+                    <label for="userPass" class="col-sm-3 control-label">Pass</label>
+                    <div class="col-sm-9">
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            id="userPass" 
+                            name="userPass" 
+                            placeholder="Password" 
+                            ng-model="newUser.pass"
+                            ng-minlength="8"
+                            required>
+                            <p ng-if="signUpForm.$submitted && signUpForm.userPass.$error.required" class="help-block">Password is required.</p>
+                            <p ng-if="signUpForm.$submitted && signUpForm.userPass.$error.minlength" class="help-block">Password must be at least 8 characters long.</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="userConfirmPass">Confirm Password</label>
-                    <input 
-                        type="password" 
-                        class="form-control" 
-                        id="userConfirmPass"
-                        name="userConfirmPass" 
-                        placeholder="Confirm Password" 
-                        ng-model="newUser.cPass"
-                        required>
+                <div class="form-group" ng-class="{ 'has-error'   : signUpForm.userConfirmPass.$invalid && signUpForm.$submitted,
+                                                    'has-success' : signUpForm.userConfirmPass.$valid && signUpForm.$submitted }">
+                    <label for="userConfirmPass" class="col-sm-3 control-label">Confirm Pass</label>
+                    <div class="col-sm-9">
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            id="userConfirmPass"
+                            name="userConfirmPass" 
+                            placeholder="Confirm Password" 
+                            ng-model="newUser.cPass"
+                            ui-validate='{passConfirmed : isPassConfirmed}'
+                            required>
+                            <p ng-if="signUpForm.$submitted && signUpForm.userConfirmPass.$error.required" class="help-block">Confirm password is required.</p>
+                            <p ng-if="signUpForm.$submitted && signUpForm.userConfirmPass.$error.passConfirmed" class="help-block">Password and confirm password fields do not match.</p>
+                    </div>
                 </div>
             </form>
             <!-- End \Sign Up Form -->
@@ -193,11 +218,12 @@
             <form 
                 id="loginForm" 
                 name="loginForm"
-                ng-submit="submitLoginForm()"
+                ng-submit="loginForm.$valid && submitLoginForm()"
                 novalidate>
 
-                <div class="form-group">
-                    <label for="existingUserOrEmail">Username or Email</label>
+                <div class="form-group" ng-class="{ 'has-error'   : loginForm.existingUserOrEmail.$invalid && loginForm.$submitted,
+                                                    'has-success' : loginForm.existingUserOrEmail.$valid && loginForm.$submitted }">
+                    <label for="existingUserOrEmail" class="control-label">Username or Email</label>
                     <input 
                         type="text" 
                         class="form-control" 
@@ -205,10 +231,15 @@
                         name="existingUserOrEmail" 
                         placeholder="Username or email" 
                         ng-model="existingUser.usernameOrEmail"
+                        ng-minlength="3"
                         required>
+                    <p ng-if="loginForm.$submitted && loginForm.existingUserOrEmail.$error.required" class="help-block">Username or email is required.</p>
+                    <p ng-if="loginForm.$submitted && loginForm.existingUserOrEmail.$error.minlength" class="help-block">Username or email is too short.</p>
                 </div>
-                <div class="form-group">
-                    <label for="userPass">Password</label>
+
+                <div class="form-group" ng-class="{ 'has-error'   : loginForm.existingPass.$invalid && loginForm.$submitted,
+                                                    'has-success' : loginForm.existingPass.$valid && loginForm.$submitted }">
+                    <label for="userPass" class="control-label">Password</label>
                     <input 
                         type="password" 
                         class="form-control" 
@@ -216,13 +247,16 @@
                         name="existingPass" 
                         placeholder="Password" 
                         ng-model="existingUser.pass"
+                        ng-minlength="8"
                         required>
+                    <p ng-if="loginForm.$submitted && loginForm.existingPass.$error.required" class="help-block">Password is required.</p>
+                    <p ng-if="loginForm.$submitted && loginForm.existingPass.$error.minlength" class="help-block">Password must be at least 8 characters long.</p>
                 </div>
             </form>
             <!-- End /Login Form -->
         </div>
         <div class="modal-footer">
-            <button class="btn btn-warning" type="button" ng-click="AlertService.reset() && closeModal()">Cancel</button>
+            <button class="btn btn-warning" type="button" ng-click="closeModal()">Cancel</button>
             <button class="btn btn-primary" form="loginForm" type="submit">
                 <span ng-if="!loginSubmit">Submit</span>
                 <span ng-if="loginSubmit"><i class="fa fa-spin fa-spinner"></i> &nbsp;Submitting</span>

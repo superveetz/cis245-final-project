@@ -3,19 +3,25 @@
     angular.module('app', [
         'ui.router',
         'ui.bootstrap',
+        'ui.validate',
         'ngAnimate',
         'app.controllers',
         'app.directives',
         'app.services'
     ])
 
-    .run(['$rootScope', '$state', function ($rootScope, $state) {
+    .run(['$rootScope', '$state', '$window', function ($rootScope, $state, $window) {
         // attach $state static app data
         $rootScope.$state = $state;
-        console.log("$state.includes('home'):", $state.includes('home'));
         
         // store Current User static app data
         $rootScope.CurrentUser = undefined;
+
+        // hook into onStateChangeStart event
+        $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+            // scroll to top of page
+            $window.scrollTo(0, 0);
+        });
     }])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
