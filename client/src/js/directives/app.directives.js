@@ -29,7 +29,7 @@
         };
     }])
     
-    .directive('scrollDisabled', ['$window', function ($window) {
+    .directive('scrollDisabled', ['$timeout', function ($timeout) {
         return {
             restrict: 'A',
             link: function (scope, elem) {
@@ -37,19 +37,16 @@
                 elem.on('show.bs.offcanvas', function () {
                     var body = document.getElementsByTagName('body')[0];
                     var html = document.getElementsByTagName('html')[0];
-                    console.log("body:", body);
-                    console.log("html:", html);
-                    
                     var bodyElem = angular.element(body);
                     var htmlElem = angular.element(html);
-                    console.log("bodyElem:", bodyElem);
-                    console.log("htmlElem:", htmlElem);
-                    
                     bodyElem.addClass('body-scroll-disabled');
                     htmlElem.addClass('html-scroll-disabled');
-                    // document.ontouchmove = function(event){
-                    //     event.preventDefault();
-                    // }
+                    
+                    $timeout(() => {
+                        document.ontouchmove = function(event){
+                            event.preventDefault();
+                        }
+                    }, 300);
                 });
 
                 elem.on('hide.bs.offcanvas', function () {
@@ -57,11 +54,14 @@
                     var html = document.html;
                     var bodyElem = angular.element(body);
                     var htmlElem = angular.element(html);
-                    bodyElem.removeClass('body-scroll-disabled');
-                    htmlElem.removeClass('htmlElem');
-                    // document.ontouchmove = function(event){
-                    //     return true;
-                    // }
+
+                    $timeout(() => {
+                        bodyElem.removeClass('body-scroll-disabled');
+                        htmlElem.removeClass('htmlElem');
+                        document.ontouchmove = function(event){
+                            return true;
+                        }
+                    }, 300);
                 });
             }
         };
