@@ -36,14 +36,14 @@
 
                 elem.on('show.bs.offcanvas', function () {
                     elem.addClass('scroll-disabled');
-                    elem.ontouchmove = function(event){
+                    document.ontouchmove = function(event){
                         event.preventDefault();
                     }
                 });
 
                 elem.on('hide.bs.offcanvas', function () {
                     elem.removeClass('scroll-disabled');
-                    elem.ontouchmove = function(event){
+                    document.ontouchmove = function(event){
                         return true;
                     }
                 });
