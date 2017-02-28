@@ -2,6 +2,28 @@
     angular.module('app.services', [
         'app.controllers'
     ])
+
+    .service('MobileSideNavService', ['$timeout', function ($timeout) {
+        let mobileNav = {
+            isOpen: false
+        };
+
+        return {
+            isOpen: function () {
+                if ($('#mobile-side-nav').hasClass('in')) {
+                    mobileNav.isOpen = true;
+                } else {
+                    mobileNav.isOpen = false;
+                }
+
+                return mobileNav.isOpen
+            },
+
+            setIsOpen: function (value) {
+                mobileNav.isOpen = value;
+            }
+        };
+    }])
     
     .service('ModalService', ['$uibModal', '$timeout', function ($uibModal, $timeout) {
         return {

@@ -10,17 +10,26 @@
         'app.services'
     ])
 
-    .run(['$rootScope', '$state', '$window', function ($rootScope, $state, $window) {
+    .run(['$rootScope', '$state', '$window', 'MobileSideNavService', function ($rootScope, $state, $window, MobileSideNavService) {
         // attach $state static app data
         $rootScope.$state = $state;
         
         // store Current User static app data
         $rootScope.CurrentUser = undefined;
 
+        // variable to determine if mobile side nav is open or not
+        $rootScope.MobileSideNavIsOpen = MobileSideNavService;
+
         // hook into onStateChangeStart event
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
             // scroll to top of page
             $window.scrollTo(0, 0);
+        });
+
+        // hook into onStateChangeSuccess event
+        $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
+            // ensure scrolling is enabled
+            MobileSideNavService.setIsOpen(false);
         });
     }])
 
@@ -41,7 +50,7 @@
             abstract: true,
             url: '',
             templateUrl: '/views/index.html',
-            controller: [function () {
+            controller: ['$rootScope', function ($rootScope) {
                 console.log('gogogo!');
             }]
         })

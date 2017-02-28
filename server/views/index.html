@@ -30,7 +30,7 @@
     <body>
 
         <!-- App -->
-        <div ui-view></div>
+        <div ui-view ng-class="{ 'scroll-disabled' : MobileSideNavService.isOpen() }"></div>
 
         <!-- Vendor JS -->
         <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -47,9 +47,9 @@
         
         <!-- App JS -->
         <script type="text/javascript" src="/app.js"></script>
+        <script type="text/javascript" src="/js/services/app.services.js"></script>
         <script type="text/javascript" src="/js/directives/app.directives.js"></script>
         <script type="text/javascript" src="/js/controllers/app.controllers.js"></script>
-        <script type="text/javascript" src="/js/services/app.services.js"></script>
         
     </body>
 </html>

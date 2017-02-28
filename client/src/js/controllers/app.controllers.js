@@ -1,5 +1,6 @@
 (function (angular) {
-    angular.module('app.controllers', [])
+    angular.module('app.controllers', [
+    ])
     
     .controller('MainNavCtrl', ['$rootScope', '$scope', '$http', '$window', '$state', '$timeout', 'ModalService', 'AlertService', function ($rootScope, $scope, $http, $window, $state, $timeout, ModalService, AlertService) {
         // open register account modal
