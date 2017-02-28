@@ -19,4 +19,5 @@ a {
 
 .scroll-disabled {
   height: 100%;
-  overflow: hidden !important; }
+  overflow: hidden !important;
+  position: fixed; }
