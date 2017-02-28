@@ -1,12 +1,19 @@
-body, html {
-  margin: 0px;
-  padding: 0px; 
-  width: 100%;
+body.body-scroll-disabled {
+  overflow: hidden;
+  position: relative;
+
+  box-sizing: border-box;
+  margin: 0;
   height: 100%;
 }
 
-.main-wrap {
-  margin-top: 50px; 
+html.html-scroll-disabled {
+  overflow: hidden;
+
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 .nopadding {
@@ -19,7 +26,7 @@ a {
 }
 
 .header {
-  padding: 12% 0;
+  padding: 18% 0;
 }
 
 .scroll-disabled {
