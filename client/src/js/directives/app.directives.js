@@ -35,30 +35,30 @@
             link: function (scope, elem) {
 
                 elem.on('show.bs.offcanvas', function () {
-                    var body = document.getElementsByTagName('body')[0];
-                    var html = document.getElementsByTagName('html')[0];
-                    var bodyElem = angular.element(body);
-                    var htmlElem = angular.element(html);
-                    bodyElem.addClass('body-scroll-disabled');
-                    htmlElem.addClass('html-scroll-disabled');
+                    let body = document.getElementsByTagName('body')[0];
+                    let html = document.getElementsByTagName('html')[0];
+                    let bodyElem = angular.element(body);
+                    let htmlElem = angular.element(html);
                     
+                    // bodyElem.addClass('body-scroll-disabled');
+                    // htmlElem.addClass('html-scroll-disabled');
                     $timeout(() => {
-                        document.ontouchmove = function(event){
+                        bodyElem.ontouchmove = function(event){
                             event.preventDefault();
                         }
                     }, 300);
                 });
 
                 elem.on('hide.bs.offcanvas', function () {
-                    var body = document.body;
-                    var html = document.html;
-                    var bodyElem = angular.element(body);
-                    var htmlElem = angular.element(html);
+                    let body = document.getElementsByTagName('body')[0];
+                    let html = document.getElementsByTagName('html')[0];
+                    let bodyElem = angular.element(body);
+                    let htmlElem = angular.element(html);
 
                     $timeout(() => {
-                        bodyElem.removeClass('body-scroll-disabled');
-                        htmlElem.removeClass('htmlElem');
-                        document.ontouchmove = function(event){
+                        // bodyElem.removeClass('body-scroll-disabled');
+                        // htmlElem.removeClass('html-scroll-disabled');
+                        bodyElem.ontouchmove = function(event){
                             return true;
                         }
                     }, 300);
