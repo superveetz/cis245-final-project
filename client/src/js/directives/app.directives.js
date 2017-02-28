@@ -40,8 +40,8 @@
                     let bodyElem = angular.element(body);
                     let htmlElem = angular.element(html);
                     
-                    // bodyElem.addClass('body-scroll-disabled');
-                    // htmlElem.addClass('html-scroll-disabled');
+                    bodyElem.addClass('body-scroll-disabled');
+                    htmlElem.addClass('html-scroll-disabled');
                     $timeout(() => {
                         bodyElem.ontouchmove = function(event){
                             event.preventDefault();
@@ -56,8 +56,8 @@
                     let htmlElem = angular.element(html);
 
                     $timeout(() => {
-                        // bodyElem.removeClass('body-scroll-disabled');
-                        // htmlElem.removeClass('html-scroll-disabled');
+                        bodyElem.removeClass('body-scroll-disabled');
+                        htmlElem.removeClass('html-scroll-disabled');
                         bodyElem.ontouchmove = function(event){
                             return true;
                         }
