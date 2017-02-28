@@ -22,6 +22,10 @@ a {
 .header {
   padding: 12% 0;
 }
+
+.navmenu-fixed-left {
+  overflow: hidden !important;
+}
 .navbar-brand {
   font-size: 1.75em;
   padding: 10px 15px;
