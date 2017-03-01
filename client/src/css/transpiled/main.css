@@ -15,7 +15,7 @@ html.html-scroll-disabled {
 #app {
   width: 100%;
   height: 100%;
-  overflow-y: scroll; }
+  overflow: hidden; }
 
 .nopadding {
   padding: 0 !important;
