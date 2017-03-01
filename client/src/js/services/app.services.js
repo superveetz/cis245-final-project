@@ -9,8 +9,12 @@
         };
 
         return {
-            disableScrolling: function () {},
-            enableScrolling: function () {}
+            disableScrolling: function () {
+                
+            },
+            enableScrolling: function () {
+
+            }
         };
     }])
     

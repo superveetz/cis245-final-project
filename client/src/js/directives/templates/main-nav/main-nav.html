@@ -223,7 +223,7 @@
 
                 <div class="form-group" ng-class="{ 'has-error'   : loginForm.existingUserOrEmail.$invalid && loginForm.$submitted,
                                                     'has-success' : loginForm.existingUserOrEmail.$valid && loginForm.$submitted }">
-                    <label for="existingUserOrEmail" class="control-label">Username or Email</label>
+                    <label for="existingUserOrEmail" class="control-label sr-only">Username or Email</label>
                     <input 
                         type="text" 
                         class="form-control" 
@@ -233,6 +233,8 @@
                         ng-model="existingUser.usernameOrEmail"
                         ng-minlength="3"
                         required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span id="inputSuccess5Status" class="sr-only">(success)</span>
                     <p ng-if="loginForm.$submitted && loginForm.existingUserOrEmail.$error.required" class="help-block">Username or email is required.</p>
                     <p ng-if="loginForm.$submitted && loginForm.existingUserOrEmail.$error.minlength" class="help-block">Username or email is too short.</p>
                 </div>

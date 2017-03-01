@@ -39,13 +39,18 @@
                 elem.on('show.bs.offcanvas', function () {
                     let body = document.getElementsByTagName('body')[0];
                     let html = document.getElementsByTagName('html')[0];
+                    let app  = document.getElementById('app');
                     let bodyElem = angular.element(body);
                     let htmlElem = angular.element(html);
+                    let appElem  = angular.element(app);
                     
                     bodyElem.addClass('body-scroll-disabled');
                     htmlElem.addClass('html-scroll-disabled');
                     $timeout(() => {
                         bodyElem.ontouchmove = function(event) {
+                            event.preventDefault();
+                        }
+                        app.ontouchmove = function(event) {
                             event.preventDefault();
                         }
                     }, 300);
@@ -62,6 +67,9 @@
                         bodyElem.removeClass('body-scroll-disabled');
                         htmlElem.removeClass('html-scroll-disabled');
                         bodyElem.ontouchmove = function(event) {
+                            return true;
+                        }
+                        app.ontouchmove = function(event) {
                             return true;
                         }
                     }, 300);
