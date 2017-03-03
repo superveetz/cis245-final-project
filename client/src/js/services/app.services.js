@@ -2,26 +2,11 @@
     angular.module('app.services', [
         'app.controllers'
     ])
-
-    .service('MobileSideNavService', ['$timeout', function ($timeout) {
-        let mobileNav = {
-            isOpen: true
-        };
-
-        return {
-            disableScrolling: function () {
-                
-            },
-            enableScrolling: function () {
-
-            }
-        };
-    }])
     
     .service('ModalService', ['$uibModal', '$timeout', function ($uibModal, $timeout) {
         return {
             openRegisterAccountModal: function () {
-                var modalInstance = $uibModal.open({
+                let modalInstance = $uibModal.open({
                     animation: true,
                     ariaLabelledBy: 'register-account-title',
                     ariaDescribedBy: 'register-account-body',
@@ -88,6 +73,8 @@
                 return true;
             },
             setAlert: function (alertObj) {
+                console.log("alertObj:", alertObj);
+                
 
                 // update alert 
                 alert = angular.copy(alertObj);  

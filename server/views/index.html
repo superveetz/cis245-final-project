@@ -37,6 +37,7 @@
         <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
         <script type="text/javascript" src="/bower_components/async/dist/async.min.js"></script>
+        <script type="text/javascript" src="/bower_components/firebase/firebase.js"></script>
 
         <!-- Angular JS -->
         <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
@@ -44,12 +45,23 @@
         <script type="text/javascript" src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
         <script type="text/javascript" src="/bower_components/angular-animate/angular-animate.min.js"></script>
         <script type="text/javascript" src="/bower_components/angular-ui-validate/dist/validate.min.js"></script>
-        
+        <script type="text/javascript" src="/bower_components/angularfire/dist/angularfire.min.js"></script>
+
         <!-- App JS -->
         <script type="text/javascript" src="/app.js"></script>
         <script type="text/javascript" src="/js/services/app.services.js"></script>
         <script type="text/javascript" src="/js/directives/app.directives.js"></script>
         <script type="text/javascript" src="/js/controllers/app.controllers.js"></script>
+
+        <script>
+            // Initialize the Firebase SDK
+            var config = {
+                apiKey: 'AIzaSyDLoNjTWobxBBCIkHVHno2wgL78wAdXdLY',
+                authDomain: 'cis245-final-project.firebaseapp.com',
+                databaseURL: 'https://cis245-final-project.firebaseio.com',
+            };
+            firebase.initializeApp(config);
+        </script>
         
     </body>
 </html>

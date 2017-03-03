@@ -1,6 +1,7 @@
 (function (angular) {
     // declare app and load dependencies
     angular.module('app', [
+        'firebase',
         'ui.router',
         'ui.bootstrap',
         'ui.validate',
@@ -10,12 +11,23 @@
         'app.services'
     ])
 
-    .run(['$rootScope', '$state', '$window', function ($rootScope, $state, $window) {
+    .run(['$rootScope', '$state', '$window', '$firebaseAuth', function ($rootScope, $state, $window, $firebaseAuth) {
         // attach $state static app data
         $rootScope.$state = $state;
         
         // store Current User static app data
         $rootScope.CurrentUser = undefined;
+        
+        // register an event that will listen for firebase authentication
+        $firebaseAuth().$onAuthStateChanged(firebaseUser => {
+            if (firebaseUser) {
+                console.log(('signed in as: ', firebaseUser));
+                $rootScope.CurrentUser = firebaseUser;
+            } else {
+                console.log('signed out');
+                $rootScope.CurrentUser = undefined;
+            }
+        });
 
         // hook into onStateChangeStart event
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {

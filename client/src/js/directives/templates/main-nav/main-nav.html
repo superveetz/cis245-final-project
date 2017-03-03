@@ -19,7 +19,8 @@
             <!-- Authenticated Dropdown -->
             <div ng-if="CurrentUser" id="auth-mobile-side-nav" class="mobile-side-auth-items">
                 <a ng-click="toggleAccountOptions()" class="text-center list-group-item">
-                    {{CurrentUser.username}} <span class="caret"></span>
+                    <img ng-src="{{CurrentUser.photoURL}}" height="20" width="20" class="user-gravitar">
+                    &nbsp;{{CurrentUser.displayName}} <span class="caret"></span>
                 </a>
                 <div ng-if="showAccountOptions" class="text-center list-group-item">
                     <a ng-click="logOut()"><i class="glyphicon glyphicon-log-out"></i> &nbsp;Log Out</a>
@@ -28,18 +29,56 @@
             <!-- Authenticated Dropdown -->
 
             <!-- Mobile Nav Links -->
-            <a ui-sref="app.home" ng-click="closeMobileSideNav()" class="text-center list-group-item" ng-class="{ active: $state.includes('app.home') }">
-                <i class="fa fa-fw fa-home"></i> &nbsp; Home
-            </a>
-            <a ui-sref="app.about" ng-click="closeMobileSideNav()" class="text-center list-group-item" ng-class="{ active: $state.includes('app.about') }">
-                <i class="fa fa-fw fa-home"></i> &nbsp; About
-            </a>
-            <a ui-sref="app.services" ng-click="closeMobileSideNav()" class="text-center list-group-item" ng-class="{ active: $state.includes('app.services') }">
-                <i class="fa fa-fw fa-home"></i> &nbsp; Services
-            </a>
-            <a ui-sref="app.contact" ng-click="closeMobileSideNav()" class="text-center list-group-item" ng-class="{ active: $state.includes('app.contact') }">
-                <i class="fa fa-fw fa-home"></i> &nbsp; Contact
-            </a>
+            <ul class="list-group">
+                <li class="list-group-item text-center" ng-class="{ active: $state.includes('app.home') }">
+                    <a ui-sref="app.home" ng-click="closeMobileSideNav()">
+                        <div class="row">
+                            <div class="col-xs-2 col-xs-offset-2">
+                                <i class="fa fa-fw fa-home fa-2x"></i>
+                            </div>
+                            <div class="col-xs-7 text-left">
+                                <b>Home</b>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item text-center" ng-class="{ active: $state.includes('app.about') }">
+                    <a ui-sref="app.about" ng-click="closeMobileSideNav()">
+                        <div class="row">
+                            <div class="col-xs-2 col-xs-offset-2">
+                                <i class="fa fa-fw fa-info fa-2x"></i>
+                            </div>
+                            <div class="col-xs-7 text-left">
+                                <b>About</b>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item text-center" ng-class="{ active: $state.includes('app.services') }">
+                    <a ui-sref="app.services" ng-click="closeMobileSideNav()">
+                        <div class="row">
+                            <div class="col-xs-2 col-xs-offset-2">
+                                <i class="fa fa-fw fa-cogs fa-2x"></i>
+                            </div>
+                            <div class="col-xs-7 text-left">
+                                <b>Services</b>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item text-center" ng-class="{ active: $state.includes('app.contact') }">
+                    <a ui-sref="app.contact" ng-click="closeMobileSideNav()">
+                        <div class="row">
+                            <div class="col-xs-2 col-xs-offset-2">
+                                <i class="fa fa-fw fa-phone fa-2x"></i>
+                            </div>
+                            <div class="col-xs-7 text-left">
+                                <b>Contact</b>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
             <!-- End \Mobile Nav Links -->
         </div>
     </div>
@@ -216,43 +255,98 @@
 
             <!-- Login Form -->
             <form 
+                class="form-horizontal"
                 id="loginForm" 
                 name="loginForm"
                 ng-submit="loginForm.$valid && submitLoginForm()"
                 novalidate>
+                
+                <div 
+                    class="form-group" 
+                    ng-class="{ 
+                        'has-error'     : loginForm.existingUserOrEmail.$invalid && loginForm.$submitted || serverResponse.loginErr,
+                        'has-success'   : loginForm.existingUserOrEmail.$valid && loginForm.$submitted && !serverResponse.loginErr,
+                        'has-feedback'  : loginForm.existingUserOrEmail.$invalid || loginForm.existingUserOrEmail.$valid
+                    }">
+                    <label class="control-label sr-only" for="existingUserOrEmail">Username or Email</label>
+                    <div class="col-sm-12">
 
-                <div class="form-group" ng-class="{ 'has-error'   : loginForm.existingUserOrEmail.$invalid && loginForm.$submitted,
-                                                    'has-success' : loginForm.existingUserOrEmail.$valid && loginForm.$submitted }">
-                    <label for="existingUserOrEmail" class="control-label sr-only">Username or Email</label>
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        id="existingUserOrEmail" 
-                        name="existingUserOrEmail" 
-                        placeholder="Username or email" 
-                        ng-model="existingUser.usernameOrEmail"
-                        ng-minlength="3"
-                        required>
-                    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-                    <span id="inputSuccess5Status" class="sr-only">(success)</span>
-                    <p ng-if="loginForm.$submitted && loginForm.existingUserOrEmail.$error.required" class="help-block">Username or email is required.</p>
-                    <p ng-if="loginForm.$submitted && loginForm.existingUserOrEmail.$error.minlength" class="help-block">Username or email is too short.</p>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-fw fa-user"></i>
+                            </span>
+
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="existingUserOrEmail" 
+                                name="existingUserOrEmail" 
+                                placeholder="Username or email" 
+                                ng-model="existingUser.usernameOrEmail"
+                                ng-keyup="serverResponse.loginErr = false"
+                                ng-minlength="3"
+                                required>
+                        </div>
+
+                        <span 
+                            ng-if="(loginForm.existingUserOrEmail.$touched || loginForm.$submitted) && loginForm.existingUserOrEmail.$valid && !serverResponse.loginErr" 
+                            class="glyphicon glyphicon-ok darkgreen form-control-feedback" 
+                            aria-hidden="true">
+                        </span>
+
+                        <span 
+                            ng-if="(loginForm.existingUserOrEmail.$touched || loginForm.$submitted) && loginForm.existingUserOrEmail.$invalid || serverResponse.loginErr" 
+                            class="glyphicon glyphicon-remove darkred form-control-feedback" 
+                            aria-hidden="true">
+                        </span>
+
+                        <p ng-if="loginForm.$submitted && loginForm.existingUserOrEmail.$error.required" class="help-block">Required</p>
+                        <p ng-if="loginForm.$submitted && loginForm.existingUserOrEmail.$error.minlength" class="help-block">Too short</p>
+                    </div><!-- end col -->
                 </div>
 
-                <div class="form-group" ng-class="{ 'has-error'   : loginForm.existingPass.$invalid && loginForm.$submitted,
-                                                    'has-success' : loginForm.existingPass.$valid && loginForm.$submitted }">
-                    <label for="userPass" class="control-label">Password</label>
-                    <input 
-                        type="password" 
-                        class="form-control" 
-                        id="existingPass" 
-                        name="existingPass" 
-                        placeholder="Password" 
-                        ng-model="existingUser.pass"
-                        ng-minlength="8"
-                        required>
-                    <p ng-if="loginForm.$submitted && loginForm.existingPass.$error.required" class="help-block">Password is required.</p>
-                    <p ng-if="loginForm.$submitted && loginForm.existingPass.$error.minlength" class="help-block">Password must be at least 8 characters long.</p>
+                <div 
+                    class="form-group" 
+                    ng-class="{ 
+                        'has-error'     : loginForm.existingPass.$invalid && loginForm.$submitted || serverResponse.loginErr,
+                        'has-success'   : loginForm.existingPass.$valid && loginForm.$submitted && !serverResponse.loginErr,
+                        'has-feedback'  : loginForm.existingPass.$invalid || loginForm.existingPass.$valid
+                    }">
+                    <label class="control-label sr-only" for="existingPass">Password</label>
+                    <div class="col-sm-12">
+
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-fw fa-lock"></i>
+                            </span>
+
+                            <input 
+                                type="password" 
+                                class="form-control" 
+                                id="existingPass" 
+                                name="existingPass" 
+                                placeholder="Password" 
+                                ng-model="existingUser.pass"
+                                ng-keyup="serverResponse.loginErr = false"
+                                ng-minlength="8"
+                                required>
+                        </div>
+
+                        <span 
+                            ng-if="(loginForm.existingPass.$touched || loginForm.$submitted) && loginForm.existingPass.$valid && !serverResponse.loginErr" 
+                            class="glyphicon glyphicon-ok darkgreen form-control-feedback" 
+                            aria-hidden="true">
+                        </span>
+
+                        <span 
+                            ng-if="(loginForm.existingPass.$touched || loginForm.$submitted) && loginForm.existingPass.$invalid || serverResponse.loginErr" 
+                            class="glyphicon glyphicon-remove darkred form-control-feedback" 
+                            aria-hidden="true">
+                        </span>
+
+                        <span ng-if="loginForm.$submitted && loginForm.existingPass.$error.required" class="help-block">Required</span>
+                        <span ng-if="loginForm.$submitted && loginForm.existingPass.$error.minlength" class="help-block">Too short</span>
+                    </div><!-- end col -->
                 </div>
             </form>
             <!-- End /Login Form -->
