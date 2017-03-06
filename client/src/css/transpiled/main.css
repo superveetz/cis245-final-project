@@ -48,28 +48,36 @@ a {
 .help-block {
   margin-bottom: 0 !important; }
 
-.navmenu,
-.navbar-offcanvas {
-  width: 240px !important; }
-
 .list-group {
   padding: 0;
   margin: 0; }
 
+.mobile-side-auth-items strong,
+.mobile-side-auth-items span.caret {
+  line-height: 38px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-shadow: 0px 2px 4px black;
+  color: white !important; }
+
 .list-group-item {
-  border-radius: 0px !important; }
+  border-radius: 0px !important;
+  background-color: #222;
+  border: 1px solid black; }
+  .list-group-item:first-child {
+    border-bottom: 0px; }
+  .list-group-item:active, .list-group-item:focus, .list-group-item:visited, .list-group-item:hover {
+    background-color: #222 !important; }
   .list-group-item b {
-    text-transform: uppercase;
-    line-height: 30px;
-    font-size: 16px;
-    color: black;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-shadow: 0px 2px 4px white; }
+    line-height: 42px;
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-shadow: 0px 2px 4px black; }
   .list-group-item i.fa {
-    color: black;
-    letter-spacing: 1px;
-    text-shadow: 0px 2px 4px white; }
+    color: white; }
 
 .list-group-item.active {
   background-color: dodgerblue !important; }
@@ -79,3 +87,30 @@ a {
   .list-group-item.active i.fa {
     color: white;
     text-shadow: 2px 2px 4px black; }
+
+#mobile-side-nav {
+  border: 1px solid black;
+  margin: 0;
+  padding: 0; }
+
+#account-modal {
+  margin: 0;
+  padding: 0; }
+  #account-modal .nav-tabs > li {
+    width: 50% !important;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    padding: 0;
+    margin: 0;
+    border: 1px solid black; }
+    #account-modal .nav-tabs > li:active, #account-modal .nav-tabs > li:focus, #account-modal .nav-tabs > li:visited, #account-modal .nav-tabs > li:hover {
+      background-color: red !important; }
+  #account-modal .nav-tabs > li.active {
+    background-color: red !important; }
+  #account-modal a {
+    border: 0px;
+    margin: 0;
+    padding: 0; }
+    #account-modal a:active, #account-modal a:focus, #account-modal a:visited, #account-modal a:hover {
+      background-color: none !important; }
