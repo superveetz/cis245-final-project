@@ -2,8 +2,10 @@
     angular.module('app.controllers', [
     ])
 
-    .controller('MainNavCtrl', ['$rootScope', '$scope', '$http', '$window', '$state', '$timeout', 'ModalService', 'AlertService', function ($rootScope, $scope, $http, $window, $state, $timeout, ModalService, AlertService) {
-
+    .controller('MainNavCtrl', ['$rootScope', '$scope', '$firebaseAuth', '$http', '$window', '$state', '$timeout', 'ModalService', 'AlertService', function ($rootScope, $scope, $firebaseAuth, $http, $window, $state, $timeout, ModalService, AlertService) {
+        // init $scope
+        $scope.authObj = $firebaseAuth();
+        
         // open register account modal
         $scope.openRegisterAccountModal = function (closeMobileNav) {
             AlertService.reset();
@@ -50,7 +52,7 @@
 
         // logout
         $scope.logOut = function () {
-            $rootScope.CurrentUser = undefined;
+            $scope.authObj.$signOut();
             return true;
         };
 
@@ -63,150 +65,84 @@
 
     }])
     
-    .controller('RegisterAccountCtrl', ['$rootScope', '$firebaseAuth', '$scope', '$http', '$timeout', '$window', '$uibModalInstance', 'AlertService', function ($rootScope, $firebaseAuth, $scope, $http, $timeout, $window, $uibModalInstance, AlertService) {
-        
-
+    .controller('LoginCtrl', ['$rootScope', '$firebaseAuth', '$scope', '$http', '$window', '$uibModalInstance', 'AlertService', function ($rootScope, $firebaseAuth, $scope, $http, $window, $uibModalInstance, AlertService, AuthService) {
         // defaults
         const dNewUser = {
-            username: '',
             email: '',
             pass: '',
             cPass: ''
         };
-        
-        // init defaults
-        $scope.newUser      = angular.copy(dNewUser);
 
-        // submit sign up form
-        $scope.submitSignUpForm = function () {
-            // turn on loading spinner
-            $scope.signupSubmit = true;
-
-            // make authentication request to our firebase api
-            firebase.auth()
-            .createUserWithEmailAndPassword($scope.newUser.email, $scope.newUser.pass)
-            .then(response => {
-                // success
-                $scope.signupSubmit = false;
-                $timeout(() => {
-                    $rootScope.CurrentUser = response.data;
-                    $scope.closeModal();
-                });
-            })
-            .catch(err => {
-                // error
-                $scope.signupSubmit = false;
-                $timeout(() => {
-                    AlertService.setAlert({  
-                        show: true,
-                        type: 'error',
-                        title: err.message
-                    });
-                });
-            });
-            // make POST request
-            // $http({
-            //     method: 'POST',
-            //     url: '/api/users/register-new',
-            //     data: $scope.newUser
-            // })
-            // .then(response => {
-            //     // success
-            //     $scope.signupSubmit = false;
-            //     $rootScope.CurrentUser = response.data;
-            //     $scope.closeModal();
-            // })
-            // .catch(err => {
-            //     // error
-            //     $scope.signupSubmit = false;
-            //     AlertService.setAlert({
-            //         show: true,
-            //         type: 'error',
-            //         title: err,
-            //         slimErr: err.data ? err : undefined
-            //     });
-            // });
-        };
-
-        // validate confirm password matches password
-        $scope.isPassConfirmed = function (confirmPass) {
-            return confirmPass.signUpForm.userPass.$$rawModelValue === confirmPass.signUpForm.userConfirmPass.$$rawModelValue;
-        };
-
-        // close modal
-        $scope.closeModal = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-    }])
-    
-    .controller('LoginCtrl', ['$rootScope', '$firebaseAuth', '$scope', '$http', '$window', '$uibModalInstance', 'AlertService', function ($rootScope, $firebaseAuth, $scope, $http, $window, $uibModalInstance, AlertService, AuthService) {
-        // defaults
         const dExistingUser = {
-            usernameOrEmail: '',
+            email: '',
             pass: ''
         };
 
         const dServerResponse = {
             loginErr: false,
-            registerErr: false
+            signUpErr: false
         };
-        
-        // init defaults
-        $scope.existingUser     = angular.copy(dExistingUser);
+
+        // init $scope
         $scope.serverResponse   = angular.copy(dServerResponse);
+        $scope.authObj          = $firebaseAuth();
+        $scope.newUser          = angular.copy(dNewUser);
+        $scope.existingUser     = angular.copy(dNewUser);
+        
+        // submit sign up form
+        $scope.submitSignUpForm = function () {
+            // turn on loading spinner
+            $scope.signUpSubmit = true;
+
+            // make authentication request to our firebase api
+            $scope.authObj.$createUserWithEmailAndPassword($scope.newUser.email, $scope.newUser.pass)
+            .then(response => {
+                // success
+                $scope.signUpSubmit = false;
+                $scope.closeModal();
+            })
+            .catch(err => {
+                // error
+                $scope.signUpSubmit = false;
+                AlertService.setAlert({  
+                    show: true,
+                    type: 'error',
+                    title: err.message
+                });
+            });
+        };
 
         // submit log in form
         $scope.submitLoginForm = function () {
             // turn on loading spinner
             $scope.loginSubmit = true;
 
-            var auth = $firebaseAuth();
-
-            // login with Facebook
-            auth.$signInWithPopup("google")
-            .then(firebaseUser => {
+            // login with email and password
+            $scope.authObj.$signInWithEmailAndPassword($scope.existingUser.email, $scope.existingUser.pass)
+            .then(response => {
                 // success
                 $scope.loginSubmit = false;
-                $rootScope.CurrentUser = firebaseUser.user;
                 $scope.closeModal();
             })
             .catch(err => {
-                console.log("err:", err);
-                
-                AlertService.setAlert({
+                // error
+                $scope.loginSubmit = false;
+                AlertService.setAlert({  
                     show: true,
                     type: 'error',
-                    title: 'error!'
+                    title: err.message
                 });
             });
-
-            // $http({
-            //     method: 'POST',
-            //     url: '/api/users/login',
-            //     data: $scope.existingUser
-            // })
-            // .then(response => {
-            //     // success
-            //     $scope.loginSubmit = false;
-            //     $rootScope.CurrentUser = response.data;
-            //     $scope.closeModal();
-            // })
-            // .catch(err => {
-            //     // error
-            //     $scope.loginSubmit = false;
-            //     $scope.serverResponse.loginErr = true;
-            //     AlertService.setAlert({
-            //         show: true,
-            //         type: 'error',
-            //         title: err,
-            //         slimErr: err.data ? err : undefined
-            //     });
-            // });
         };
 
         // close modal
         $scope.closeModal = function () {
             $uibModalInstance.dismiss('cancel');
+        };
+
+        // validate confirm password matches password
+        $scope.isPassConfirmed = function (confirmPass) {
+            return confirmPass.signUpForm.newUserPass.$$rawModelValue === confirmPass.signUpForm.newUserCPass.$$rawModelValue;
         };
     }]);
 })(angular);

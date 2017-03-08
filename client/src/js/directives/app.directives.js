@@ -76,5 +76,15 @@
                 });
             }
         };
-    }]);
+    }])
+    
+    // used to bind forms where type="email" as 2 forms with same ng-model bind only seem to bind when changed to type="text"
+    .directive('lateEmail', function () {
+        return {
+            priority: -1,
+            link: function(scope, elem, attrs) {
+                elem.attr('type', 'email');
+            }
+        };
+    });;
 })(angular);

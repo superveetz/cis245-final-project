@@ -24,6 +24,7 @@
     "async": "^2.1.5",
     "angular-ui-validate": "^1.2.2",
     "angularfire": "^2.3.0",
-    "animate.css": "^3.5.2"
+    "animate.css": "^3.5.2",
+    "ngSmoothScroll": "^2.0.0"
   }
 }
