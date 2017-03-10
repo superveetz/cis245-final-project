@@ -1,7 +1,6 @@
 body.body-scroll-disabled {
   overflow: hidden;
   position: relative;
-  -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
   margin: 0;
   height: 100%;
@@ -10,7 +9,6 @@ body.body-scroll-disabled {
 html.html-scroll-disabled {
   overflow: hidden;
   position: fixed;
-  -webkit-overflow-scrolling: touch;
   height: 100%;
   margin: 0;
   padding: 0;
