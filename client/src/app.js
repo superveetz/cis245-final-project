@@ -20,6 +20,8 @@
         
         // register an event that will listen for firebase authentication
         $firebaseAuth().$onAuthStateChanged(firebaseUser => {
+            console.log("$firebaseAuth()$.getAuth():", $firebaseAuth().$getAuth());
+            
             if (firebaseUser) {
                 console.log(('signed in as: ', firebaseUser));
                 $rootScope.CurrentUser = firebaseUser;

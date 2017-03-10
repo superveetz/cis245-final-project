@@ -94,7 +94,7 @@
             // turn on loading spinner
             $scope.signUpSubmit = true;
 
-            // make authentication request to our firebase api
+            // make sign up request to our firebase API
             $scope.authObj.$createUserWithEmailAndPassword($scope.newUser.email, $scope.newUser.pass)
             .then(response => {
                 // success
@@ -128,6 +128,54 @@
                 // error
                 $scope.loginSubmit = false;
                 AlertService.setAlert({  
+                    show: true,
+                    type: 'error',
+                    title: err.message
+                });
+            });
+        };
+
+        // login with fb
+        $scope.loginWithFacebook = function () {
+            $scope.fbSubmit = true;
+
+            $scope.authObj.$signInWithRedirect("facebook")
+            .catch(err => {
+                // error
+                $scope.fbSubmit = false;
+                AlertService.setAlert({
+                    show: true,
+                    type: 'error',
+                    title: err.message
+                });
+            });
+        };
+
+        // login with twitter
+        $scope.loginWithTwitter = function () {
+            $scope.twitSubmit = true;
+
+            $scope.authObj.$signInWithRedirect("twitter")
+            .catch(err => {
+                // error
+                $scope.twitSubmit = false;
+                AlertService.setAlert({
+                    show: true,
+                    type: 'error',
+                    title: err.message
+                });
+            });
+        };
+
+        // login with google
+        $scope.loginWithGoogle = function () {
+            $scope.googSubmit = true;
+
+            $scope.authObj.$signInWithRedirect("google")
+            .catch(err => {
+                // error
+                $scope.googSubmit = false;
+                AlertService.setAlert({
                     show: true,
                     type: 'error',
                     title: err.message
