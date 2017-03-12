@@ -21,6 +21,7 @@ html.html-scroll-disabled {
   overflow-y: scroll; }
 
 .main-wrap {
+  overflow-y: scroll !important;
   -webkit-overflow-scrolling: touch !important; }
 
 .no-padding {

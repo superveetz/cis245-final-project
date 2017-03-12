@@ -26,6 +26,7 @@ html.html-scroll-disabled {
 }
 
 .main-wrap {
+  overflow-y: scroll !important;
   -webkit-overflow-scrolling: touch !important;
 }
 
