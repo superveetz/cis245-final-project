@@ -1,6 +1,13 @@
 #main-nav {
-  overflow: hidden;
-  -webkit-overflow-scrolling: visible !important;
+  overflow: hidden !important;
+  * {
+    -webkit-overflow-scrolling: visible !important;
+  }
+
+  #mobile-side-nav {
+    -webkit-overflow-scrolling: visible !important;
+  }
+
   
   .navbar-brand {
     font-size: 1.75em;
