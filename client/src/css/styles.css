@@ -314,7 +314,7 @@ a {
 }
 #main-nav {
   overflow: hidden;
-  -webkit-overflow-scrolling: none !important;
+  -webkit-overflow-scrolling: visible !important;
 }
 
 #main-nav .navbar-brand {
