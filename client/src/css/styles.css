@@ -23,6 +23,10 @@ html.html-scroll-disabled {
   overflow-y: scroll;
 }
 
+#app .main-wrap {
+  -webkit-overflow-scrolling: touch !important;
+}
+
 .no-padding {
   padding: 0 !important;
   margin: 0 !important;

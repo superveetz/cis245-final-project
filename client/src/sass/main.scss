@@ -24,6 +24,10 @@ html.html-scroll-disabled {
   overflow-x: hidden;
   overflow-y: scroll;
   // -webkit-overflow-scrolling: touch !important;
+
+  .main-wrap {
+    -webkit-overflow-scrolling: touch !important;
+  }
 }
 
 .no-padding {

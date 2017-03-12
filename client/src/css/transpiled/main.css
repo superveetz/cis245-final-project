@@ -19,6 +19,8 @@ html.html-scroll-disabled {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll; }
+  #app .main-wrap {
+    -webkit-overflow-scrolling: touch !important; }
 
 .no-padding {
   padding: 0 !important;
