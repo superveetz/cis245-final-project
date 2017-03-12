@@ -2,8 +2,6 @@
   overflow: hidden !important; }
   #main-nav * {
     -webkit-overflow-scrolling: visible !important; }
-  #main-nav #mobile-side-nav {
-    -webkit-overflow-scrolling: visible !important; }
   #main-nav .navbar-brand {
     font-size: 1.75em;
     padding: 10px 15px;

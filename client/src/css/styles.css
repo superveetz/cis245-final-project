@@ -21,7 +21,6 @@ html.html-scroll-disabled {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  -webkit-overflow-scrolling: touch !important;
 }
 
 .no-padding {
@@ -317,10 +316,6 @@ a {
 }
 
 #main-nav * {
-  -webkit-overflow-scrolling: visible !important;
-}
-
-#main-nav #mobile-side-nav {
   -webkit-overflow-scrolling: visible !important;
 }
 
