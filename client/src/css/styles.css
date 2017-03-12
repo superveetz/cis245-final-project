@@ -21,9 +21,6 @@ html.html-scroll-disabled {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-}
-
-#app .main-wrap {
   -webkit-overflow-scrolling: touch !important;
 }
 
@@ -315,10 +312,6 @@ a {
   font-weight: bold;
   text-transform: uppercase;
 }
-#main-nav {
-  overflow: hidden !important;
-}
-
 #main-nav * {
   -webkit-overflow-scrolling: visible !important;
 }

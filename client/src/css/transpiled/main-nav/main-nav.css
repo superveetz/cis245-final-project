@@ -1,21 +1,22 @@
-#main-nav {
-  overflow: hidden !important; }
-  #main-nav * {
-    -webkit-overflow-scrolling: visible !important; }
-  #main-nav .navbar-brand {
-    font-size: 1.75em;
-    padding: 10px 15px;
-    line-height: 30px; }
-  #main-nav .logo-brand h2 {
-    display: inline-block;
-    font-size: 1em;
-    margin: 0;
-    padding: 0; }
-  #main-nav .logo {
-    display: inline-block;
-    width: 50px;
-    height: 54px;
-    padding-bottom: 20px; }
-    #main-nav .logo img {
-      height: 100%;
-      width: 100%; }
+#main-nav * {
+  -webkit-overflow-scrolling: visible !important; }
+
+#main-nav .navbar-brand {
+  font-size: 1.75em;
+  padding: 10px 15px;
+  line-height: 30px; }
+
+#main-nav .logo-brand h2 {
+  display: inline-block;
+  font-size: 1em;
+  margin: 0;
+  padding: 0; }
+
+#main-nav .logo {
+  display: inline-block;
+  width: 50px;
+  height: 54px;
+  padding-bottom: 20px; }
+  #main-nav .logo img {
+    height: 100%;
+    width: 100%; }
