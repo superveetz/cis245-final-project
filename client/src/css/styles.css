@@ -21,10 +21,6 @@ html.html-scroll-disabled {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-}
-
-.main-wrap {
-  overflow-y: scroll !important;
   -webkit-overflow-scrolling: touch !important;
 }
 
@@ -316,27 +312,32 @@ a {
   font-weight: bold;
   text-transform: uppercase;
 }
-.navbar-brand {
+#main-nav {
+  overflow: hidden;
+  -webkit-overflow-scrolling: none !important;
+}
+
+#main-nav .navbar-brand {
   font-size: 1.75em;
   padding: 10px 15px;
   line-height: 30px;
 }
 
-.logo-brand h2 {
+#main-nav .logo-brand h2 {
   display: inline-block;
   font-size: 1em;
   margin: 0;
   padding: 0;
 }
 
-.logo {
+#main-nav .logo {
   display: inline-block;
   width: 50px;
   height: 54px;
   padding-bottom: 20px;
 }
 
-.logo img {
+#main-nav .logo img {
   height: 100%;
   width: 100%;
 }
