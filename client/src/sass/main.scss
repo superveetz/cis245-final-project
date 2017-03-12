@@ -23,10 +23,6 @@ html.html-scroll-disabled {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-}
-
-.main-wrap {
-  overflow-y: scroll !important;
   -webkit-overflow-scrolling: touch !important;
 }
 
