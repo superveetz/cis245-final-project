@@ -29,13 +29,13 @@
         <![endif]-->
         <base href="/">
     </head>
-    <body scroll-disabled>
+    <body scroll-disabled id="test">
         
         <!-- Main Nav + Side Menu -->
         <main-nav id="main-nav"></main-nav>
 
         <!-- App -->
-        <div ui-view id="app"></div>
+        <div ui-view id="app" scroll-to-top-when="state-changed"></div>
 
         <!-- Vendor JS -->
         <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>

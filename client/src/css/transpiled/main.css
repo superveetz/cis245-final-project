@@ -19,7 +19,27 @@ html.html-scroll-disabled {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  -webkit-overflow-scrolling: touch !important; }
+  -webkit-overflow-scrolling: touch !important;
+  /*
+   * Simple Example of a custom scrollbar that works in most modern browsers.
+   * taken from: - https://css-tricks.com/examples/WebKitScrollbars/ 
+  */
+  /* Track */
+  /* Handle */ }
+  #app::-webkit-scrollbar {
+    width: 12px; }
+  #app::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background: rgba(0, 0, 0, 0.7); }
+  #app::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background: #0A95FF;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); }
+  #app::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 255, 0, 0.7); }
 
 .no-padding {
   padding: 0 !important;

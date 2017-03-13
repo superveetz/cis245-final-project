@@ -11,7 +11,7 @@
         'app.services'
     ])
 
-    .run(['$rootScope', '$state', '$window', '$firebaseAuth', function ($rootScope, $state, $window, $firebaseAuth) {
+    .run(['$rootScope', '$state', '$window', '$firebaseAuth', '$location', '$anchorScroll', '$timeout', function ($rootScope, $state, $window, $firebaseAuth, $location, $anchorScroll, $timeout) {
         // attach $state static app data
         $rootScope.$state = $state;
         
@@ -31,14 +31,28 @@
 
         // hook into onStateChangeStart event
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-            // scroll to top of page
-            $window.scrollTo(0, 0);
+            // cancel state transition if 1 is occuring already
+            if ($rootScope.stateChangeOccuring) return e.preventDefault(); 
+
+            // disable any further state transitions
+            $rootScope.stateChangeOccuring = true;
         });
 
         // hook into onStateChangeSuccess event
         $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
-            // ensure scrolling is enabled
+            // scroll to top on page at start of state change
+            $location.hash('main-view');
+            $anchorScroll();
+            $location.hash('');
+            
+
+            // wait for transitition animation to end after 1s
+            $timeout(() => {
+                // allow state changes
+                $rootScope.stateChangeOccuring = false;
+            }, 1000);
         });
+        
     }])
 
     .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -66,8 +80,9 @@
         .state('app.home', {
             url: '/',
             templateUrl: '/views/home/index.html',
-            controller: [function () {
+            controller: ['$window', function ($window) {
                 console.log('go me');
+                $window.scrollTo(0, 0);
             }]
         })
         

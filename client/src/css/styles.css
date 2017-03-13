@@ -22,6 +22,34 @@ html.html-scroll-disabled {
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch !important;
+  /*
+   * Simple Example of a custom scrollbar that works in most modern browsers.
+   * taken from: - https://css-tricks.com/examples/WebKitScrollbars/ 
+  */
+  /* Track */
+  /* Handle */
+}
+
+#app::-webkit-scrollbar {
+  width: 12px;
+}
+
+#app::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#app::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  background: #0A95FF;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+#app::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255, 255, 0, 0.7);
 }
 
 .no-padding {
@@ -335,4 +363,28 @@ a {
 #main-nav .logo img {
   height: 100%;
   width: 100%;
+}
+.main-wrap {
+  position: relative;
+}
+
+.main-wrap .main-view {
+  position: absolute;
+  width: 100%;
+  /* start 'enter' transition */
+  /* end 'enter' transition */
+}
+
+.main-wrap .main-view.ng-leave {
+  animation-name: slideOutRight;
+  animation-timing-function: linear;
+  animation-duration: 0.8s;
+  z-index: 8888;
+}
+
+.main-wrap .main-view.ng-enter {
+  animation-name: slideInLeft;
+  animation-timing-function: linear;
+  animation-duration: 0.8s;
+  z-index: 9999;
 }

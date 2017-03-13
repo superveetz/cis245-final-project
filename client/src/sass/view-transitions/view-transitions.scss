@@ -1,0 +1,23 @@
+.main-wrap {
+    position: relative;
+
+    .main-view {
+        position: absolute;    
+        width: 100%;
+        /* start 'enter' transition */
+        &.ng-leave {
+            animation-name: slideOutRight;
+            animation-timing-function: linear;
+            animation-duration: 0.8s;
+            z-index: 8888;
+        }
+    
+        /* end 'enter' transition */
+        &.ng-enter {
+            animation-name: slideInLeft;
+            animation-timing-function: linear;
+            animation-duration: 0.8s;
+            z-index: 9999;
+        }
+    }
+}

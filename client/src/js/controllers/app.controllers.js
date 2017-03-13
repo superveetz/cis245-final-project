@@ -139,7 +139,12 @@
         $scope.loginWithFacebook = function () {
             $scope.fbSubmit = true;
 
-            $scope.authObj.$signInWithRedirect("facebook")
+            $scope.authObj.$signInWithPopup("facebook")
+            .then(res => {
+                // success
+                $scope.fbSubmit = false;
+                $scope.closeModal();
+            })
             .catch(err => {
                 // error
                 $scope.fbSubmit = false;
@@ -155,7 +160,12 @@
         $scope.loginWithTwitter = function () {
             $scope.twitSubmit = true;
 
-            $scope.authObj.$signInWithRedirect("twitter")
+            $scope.authObj.$signInWithPopup("twitter")
+            .then(res => {
+                // success
+                $scope.twitSubmit = false;
+                $scope.closeModal();
+            })
             .catch(err => {
                 // error
                 $scope.twitSubmit = false;
@@ -171,7 +181,12 @@
         $scope.loginWithGoogle = function () {
             $scope.googSubmit = true;
 
-            $scope.authObj.$signInWithRedirect("google")
+            $scope.authObj.$signInWithPopup("google")
+            .then(res => {
+                // success
+                $scope.googSubmit = false;
+                $scope.closeModal();
+            })
             .catch(err => {
                 // error
                 $scope.googSubmit = false;

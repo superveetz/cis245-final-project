@@ -11,6 +11,26 @@
             controller: 'MainNavCtrl'
         };
     }])
+
+    .directive('mainFooter', [function () {
+        return {
+            restrict: 'E',
+            replace: true,
+            templateUrl: '/js/directives/templates/main-footer/main-footer.html'
+        };
+    }])
+
+    .directive("scrollToTopWhen", ['$timeout', '$location', '$anchorScroll', function ($timeout, $location, $anchorScroll) {
+        return {
+            link: function (scope, elem, attrs) {
+                scope.$on(attrs.scrollToTopWhen, () => {
+                    $timeout(() => {
+                        elem.scroll(0, 0);
+                    });
+                });
+            }
+        };
+    }])
     
     .directive('alertBox', ['AlertService', function (AlertService) {
         return {
@@ -76,15 +96,5 @@
                 });
             }
         };
-    }])
-    
-    // used to bind forms where type="email" as 2 forms with same ng-model bind only seem to bind when changed to type="text"
-    .directive('lateEmail', function () {
-        return {
-            priority: -1,
-            link: function(scope, elem, attrs) {
-                elem.attr('type', 'email');
-            }
-        };
-    });;
+    }]);
 })(angular);
