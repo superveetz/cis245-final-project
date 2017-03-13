@@ -12,6 +12,8 @@ $app->post('/api/users/register-new', function ($request, $response) {
     $email          = $request->getParsedBody()['email'];
     $password       = $request->getParsedBody()['pass'];
 
+    // todo: validate inputs with Validator:: library
+    
     // hash the submitted password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -40,6 +42,8 @@ $app->post('/api/users/login', function (Request $request, Response $response) {
     // parse body for params
     $usernameOrEmail    = $request->getParsedBody()['usernameOrEmail'];
     $password           = $request->getParsedBody()['pass'];
+
+    // todo: validate inputs with Validator:: library
 
     // create a User Model
     $userModel = new User(array(
