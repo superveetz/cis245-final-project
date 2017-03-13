@@ -21,6 +21,11 @@ html.html-scroll-disabled {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+.main-view {
+  overflow-x: hidden;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch !important;
 }
 
@@ -312,10 +317,6 @@ a {
   font-weight: bold;
   text-transform: uppercase;
 }
-#main-nav * {
-  -webkit-overflow-scrolling: visible !important;
-}
-
 #main-nav .navbar-brand {
   font-size: 1.75em;
   padding: 10px 15px;
