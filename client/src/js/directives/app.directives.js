@@ -60,12 +60,9 @@
                 
                 elem.bind('scroll', function (event) {
                     const scrollAmount = elem.scrollTop();
-                    console.log("scrollAmount:", scrollAmount);
-                    
 
                     if (scrollAmount <= 50) {
                         // at top of screen
-                        // scrolling up
                         if (mainNavEl.hasClass('slideInDown')) mainNavEl.removeClass('slideInDown');
                         if (mainNavEl.hasClass('slideOutUp')) mainNavEl.removeClass('slideOutUp');
                         mainNavEl.addClass('slideInDown');

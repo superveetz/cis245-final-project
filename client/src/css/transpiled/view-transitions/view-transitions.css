@@ -8,10 +8,10 @@
     .main-wrap .main-view.ng-leave {
       animation-name: slideOutLeft;
       animation-timing-function: ease-out;
-      animation-duration: 0.4s;
+      animation-duration: 1.4s;
       z-index: 555; }
     .main-wrap .main-view.ng-enter {
       animation-name: slideInRight;
       animation-timing-function: ease-out;
-      animation-duration: 0.4s;
+      animation-duration: 1.4s;
       z-index: 666; }

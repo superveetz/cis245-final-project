@@ -8,7 +8,7 @@
         &.ng-leave {
             animation-name: slideOutLeft;
             animation-timing-function: ease-out;
-            animation-duration: 0.4s;
+            animation-duration: 1.4s;
             z-index: 555;
         }
     
@@ -16,7 +16,7 @@
         &.ng-enter {
             animation-name: slideInRight;
             animation-timing-function: ease-out;
-            animation-duration: 0.4s;
+            animation-duration: 1.4s;
             z-index: 666;
         }
     }
