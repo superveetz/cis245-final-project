@@ -8,7 +8,8 @@
         'ngAnimate',
         'app.controllers',
         'app.directives',
-        'app.services'
+        'app.services',
+        'canvas-raining'
     ])
 
     .run(['$rootScope', '$state', '$window', '$firebaseAuth', '$location', '$anchorScroll', '$timeout', function ($rootScope, $state, $window, $firebaseAuth, $location, $anchorScroll, $timeout) {
@@ -40,8 +41,8 @@
 
         // hook into onStateChangeSuccess event
         $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
-            // scroll to top on page at start of state change
-            $location.hash('main-view');
+            // scroll to top on page once state change transition starts
+            $location.hash(fromState.name);
             $anchorScroll();
             $location.hash('');
             
@@ -50,7 +51,7 @@
             $timeout(() => {
                 // allow state changes
                 $rootScope.stateChangeOccuring = false;
-            }, 1000);
+            }, 700);
         });
         
     }])

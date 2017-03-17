@@ -6,12 +6,12 @@
     /* start 'enter' transition */
     /* end 'enter' transition */ }
     .main-wrap .main-view.ng-leave {
-      animation-name: slideOutRight;
-      animation-timing-function: linear;
-      animation-duration: 0.8s;
-      z-index: 8888; }
+      animation-name: slideOutLeft;
+      animation-timing-function: ease-out;
+      animation-duration: 0.4s;
+      z-index: 555; }
     .main-wrap .main-view.ng-enter {
-      animation-name: slideInLeft;
-      animation-timing-function: linear;
-      animation-duration: 0.8s;
-      z-index: 9999; }
+      animation-name: slideInRight;
+      animation-timing-function: ease-out;
+      animation-duration: 0.4s;
+      z-index: 666; }

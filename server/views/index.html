@@ -29,13 +29,17 @@
         <![endif]-->
         <base href="/">
     </head>
-    <body scroll-disabled id="test">
-        
+    <body scroll-disabled>
         <!-- Main Nav + Side Menu -->
         <main-nav id="main-nav"></main-nav>
 
         <!-- App -->
-        <div ui-view id="app" scroll-to-top-when="state-changed"></div>
+        <div 
+            id="app" 
+            scroll-to-top-when="state-changed" 
+            hide-nav-on-scroll ui-view>
+            Loading..
+        </div>
 
         <!-- Vendor JS -->
         <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -54,8 +58,13 @@
 
         <!-- App JS -->
         <script type="text/javascript" src="/app.js"></script>
+        <!-- Modules -->
+        <script type="text/javascript" src="/js/modules/canvas-raining/canvas-raining.js"></script>
+        <!-- Services -->
         <script type="text/javascript" src="/js/services/app.services.js"></script>
+        <!-- Directives -->
         <script type="text/javascript" src="/js/directives/app.directives.js"></script>
+        <!-- Controllers -->
         <script type="text/javascript" src="/js/controllers/app.controllers.js"></script>
 
         <script>

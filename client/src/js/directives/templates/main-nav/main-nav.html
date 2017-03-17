@@ -120,7 +120,7 @@
     <!-- End \Mobile Side Nav -->
 
     <!-- Top Nav Bar -->
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top animated" id="top-nav">
         <div class="container">
             <!-- Toggle Mobile Side Menu Button -->
             <div class="navbar-header">
@@ -150,7 +150,7 @@
                     <li ng-class="{ active: $state.includes('app.services') }"><a ui-sref="app.services">Services</a></li>
                     <li ng-class="{ active: $state.includes('app.contact') }"><a ui-sref="app.contact">Contact</a></li>
 
-                    <!-- Unauthenticated Desktop Dropdown -->
+                    <!-- Authenticated Desktop Dropdown -->
                     <li ng-if="CurrentUser" class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <img ng-if="CurrentUser.photoURL" ng-src="{{CurrentUser.photoURL}}" height="18" width="18" class="user-gravitar img-circle">
@@ -166,13 +166,18 @@
                             <li><a ng-click="logOut()"><i class="glyphicon glyphicon-log-out"></i> &nbsp;Log Out</a></li>
                         </ul>
                     </li>
-                    <!-- End \Unauthenticated Desktop Dropdown -->
-
-                    <!-- Authenticated Desktop Dropdown -->
-                    <li ng-if="!CurrentUser" class="dropdown">
-                        <a ng-click="openLoginModal()" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
-                    </li>
                     <!-- End \Authenticated Desktop Dropdown -->
+
+                    <!-- Unauthenticated Desktop Dropdown -->
+                    <li ng-if="!CurrentUser">
+                        <a ng-click="openLoginModal()" aria-haspopup="true" aria-expanded="false">
+                            <span class="label label-primary" style="font-size: 1.15em;">
+                                <i class="fa fa-fw fa-user"></i>
+                                Account
+                            </span>
+                        </a>
+                    </li>
+                    <!-- End \Unauthenticated Desktop Dropdown -->
                 </ul>
             </div>
             <!-- End \Desktop Nav Links -->

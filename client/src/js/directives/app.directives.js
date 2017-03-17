@@ -48,6 +48,42 @@
             }
         };
     }])
+
+    .directive('hideNavOnScroll', [function () {
+        return {
+            restrict: 'A',
+            link: function (scope, elem) {
+                let mainNav             = document.getElementById('top-nav');
+                let mainNavEl           = angular.element(mainNav);
+                let lastScrollAmount    = elem.scrollTop();
+                let animationOccuring   = false;
+                
+                elem.bind('scroll', function (event) {
+                    const scrollAmount = elem.scrollTop();
+
+                    if (scrollAmount > lastScrollAmount) { 
+                        // scrolling down 
+                        if (!animationOccuring) {
+                            if (mainNavEl.hasClass('slideInDown')) mainNavEl.removeClass('slideInDown');
+                            mainNavEl.addClass('slideOutUp');
+                            animationOccuring = true;
+                            setTimeout(function () { animationOccuring = false; }, 700);
+                        }
+                    } else {                                
+                        // scrolling up
+                        if (!animationOccuring) {
+                            if (mainNavEl.hasClass('slideOutUp')) mainNavEl.removeClass('slideOutUp');
+                            mainNavEl.addClass('slideInDown');
+                            animationOccuring = true;
+                            setTimeout(function () { animationOccuring = false; }, 700);
+                        }
+                    }
+
+                    lastScrollAmount = elem.scrollTop();
+                });
+            }
+        };
+    }])
     
     .directive('scrollDisabled', ['$window', '$timeout', function ($window, $timeout) {
         return {

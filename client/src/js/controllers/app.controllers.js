@@ -207,5 +207,9 @@
         $scope.isPassConfirmed = function (confirmPass) {
             return confirmPass.signUpForm.newUserPass.$$rawModelValue === confirmPass.signUpForm.newUserCPass.$$rawModelValue;
         };
+    }])
+    
+    .controller('AppCtrl', ['$rootScope', '$state', function ($rootScope, $state) {
+        
     }]);
 })(angular);

@@ -1,3 +1,6 @@
+#main-nav #top-nav {
+  z-index: 999; }
+
 #main-nav .navbar-brand {
   font-size: 1.75em;
   padding: 10px 15px;
