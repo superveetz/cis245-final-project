@@ -63,7 +63,7 @@
                     console.log("scrollAmount:", scrollAmount);
                     
 
-                    if (scrollAmount === 0) {
+                    if (scrollAmount <= 50) {
                         // at top of screen
                         // scrolling up
                         if (mainNavEl.hasClass('slideInDown')) mainNavEl.removeClass('slideInDown');
