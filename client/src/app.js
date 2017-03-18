@@ -74,7 +74,6 @@
             url: '',
             templateUrl: '/views/index.html',
             controller: ['$rootScope', function ($rootScope) {
-                console.log('gogogo!');
             }]
         })
         
@@ -82,8 +81,6 @@
             url: '/',
             templateUrl: '/views/home/index.html',
             controller: ['$window', function ($window) {
-                console.log('go me');
-                $window.scrollTo(0, 0);
             }]
         })
         
