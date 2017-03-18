@@ -10,9 +10,9 @@
 
         &.ng-leave,
         &.ng-leave-active {
-            -webkit-animation: slideOutLeft 1.4s ease-out;
-            -moz-animation: slideOutLeft 1.4s ease-out;
-            animation: slideOutLeft 1.4s ease-out;
+            -webkit-animation: slideOutLeft ease-out;
+            -moz-animation: slideOutLeft ease-out;
+            animation: slideOutLeft ease-out;
 
             -webkit-animation-duration: 1.4s;
             -moz-animation-duration: 1.4s;
