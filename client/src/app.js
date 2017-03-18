@@ -81,6 +81,7 @@
             url: '/',
             templateUrl: '/views/home/index.html',
             controller: ['$window', function ($window) {
+                $window.scrollTo(0, 0);
             }]
         })
         
