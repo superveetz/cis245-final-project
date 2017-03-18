@@ -4,20 +4,39 @@
     .main-view {
         position: absolute;    
         width: 100%;
-        /* start 'enter' transition */
-        &.ng-leave {
+
+        &.ng-leave,
+        &.ng-leave-active {
+            -webkit-animation-name: slideOutLeft;
+            -moz-animation-name: slideOutLeft;
             animation-name: slideOutLeft;
+
+            -webkit-animation-timing-function: ease-out;
+            -moz-animation-timing-function: ease-out;
             animation-timing-function: ease-out;
+
+            -webkit-animation-duration: 1.4s;
+            -moz-animation-duration: 1.4s;
             animation-duration: 1.4s;
-            z-index: 555;
-        }
-    
-        /* end 'enter' transition */
-        &.ng-enter {
-            animation-name: slideInRight;
-            animation-timing-function: ease-out;
-            animation-duration: 1.4s;
+
             z-index: 666;
+        }
+        
+        &.ng-enter,
+        &.ng-enter-active {
+            -webkit-animation-name: slideInRight;
+            -moz-animation-name: slideInRight;
+            animation-name: slideInRight;
+
+            -webkit-animation-timing-function: ease-out;
+            -moz-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+            
+            -webkit-animation-duration: 1.4s;
+            -moz-animation-duration: 1.4s;
+            animation-duration: 1.4s;
+
+            z-index: 555;
         }
     }
 }
