@@ -1,9 +1,11 @@
 .main-wrap {
     position: relative;
     box-sizing: border-box;
+    width: 100%;
 
     .main-view {
         position: absolute;    
+        box-sizing: border-box;
         width: 100%;
 
         &.ng-leave,
@@ -12,14 +14,22 @@
             -moz-animation: slideOutLeft 1.4s ease-out;
             animation: slideOutLeft 1.4s ease-out;
 
+            -webkit-animation-duration: 1.4s;
+            -moz-animation-duration: 1.4s;
+            animation-duration: 1.4s;
+
             z-index: 666;
         }
         
         &.ng-enter,
         &.ng-enter-active {
-            -webkit-animation: slideInRight 1.4s ease-out;
-            -moz-animation: slideInRight 1.4s ease-out;
-            animation: slideInRight 1.4s ease-out;
+            -webkit-animation: slideInRight ease-out;
+            -moz-animation: slideInRight ease-out;
+            animation: slideInRight ease-out;
+
+            -webkit-animation-duration: 1.4s;
+            -moz-animation-duration: 1.4s;
+            animation-duration: 1.4s;
 
             z-index: 555;
         }

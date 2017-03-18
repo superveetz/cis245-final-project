@@ -1,17 +1,24 @@
 .main-wrap {
-  position: relative; }
+  position: relative;
+  box-sizing: border-box;
+  width: 100%; }
   .main-wrap .main-view {
     position: absolute;
-    width: 100%;
-    /* start 'enter' transition */
-    /* end 'enter' transition */ }
-    .main-wrap .main-view.ng-leave {
-      animation-name: slideOutLeft;
-      animation-timing-function: ease-out;
-      animation-duration: 1.4s;
-      z-index: 555; }
-    .main-wrap .main-view.ng-enter {
-      animation-name: slideInRight;
-      animation-timing-function: ease-out;
+    box-sizing: border-box;
+    width: 100%; }
+    .main-wrap .main-view.ng-leave, .main-wrap .main-view.ng-leave-active {
+      -webkit-animation: slideOutLeft 1.4s ease-out;
+      -moz-animation: slideOutLeft 1.4s ease-out;
+      animation: slideOutLeft 1.4s ease-out;
+      -webkit-animation-duration: 1.4s;
+      -moz-animation-duration: 1.4s;
       animation-duration: 1.4s;
       z-index: 666; }
+    .main-wrap .main-view.ng-enter, .main-wrap .main-view.ng-enter-active {
+      -webkit-animation: slideInRight ease-out;
+      -moz-animation: slideInRight ease-out;
+      animation: slideInRight ease-out;
+      -webkit-animation-duration: 1.4s;
+      -moz-animation-duration: 1.4s;
+      animation-duration: 1.4s;
+      z-index: 555; }
