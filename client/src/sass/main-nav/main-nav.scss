@@ -2,6 +2,12 @@
 
   #top-nav {
     z-index: 999;
+
+    -webkit-animation-duration: 0.6s;
+    animation-duration: 0.6s;
+
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
   }
   
   .navbar-brand {
@@ -30,7 +36,7 @@
       text-transform: uppercase;
       margin: 0;
       padding: 0;
-      letter-spacing: 0px;
+      letter-spacing: -1px;
       font-weight: bold;
       line-height: 10px;
       color: #d97c0c;

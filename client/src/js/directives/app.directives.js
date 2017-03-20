@@ -62,30 +62,31 @@
                 
                 elem.bind('scroll', function (event) {
                     const scrollAmount = elem.scrollTop();
-
-                    if (scrollAmount <= 50) {
-                        // at top of screen
-                        if (mainNavEl.hasClass('slideInDown')) mainNavEl.removeClass('slideInDown');
-                        if (mainNavEl.hasClass('slideOutUp')) mainNavEl.removeClass('slideOutUp');
-                        mainNavEl.addClass('slideInDown');
-                        animationOccuring = true;
-                        setTimeout(function () { animationOccuring = false; }, 700);
-                    }
-                    else if(scrollAmount > lastScrollAmount) { 
+                    
+                    if (scrollAmount > lastScrollAmount) {
                         // scrolling down 
                         if (!animationOccuring) {
                             if (mainNavEl.hasClass('slideInDown')) mainNavEl.removeClass('slideInDown');
                             mainNavEl.addClass('slideOutUp');
                             animationOccuring = true;
-                            setTimeout(function () { animationOccuring = false; }, 700);
+                            setTimeout(function () { animationOccuring = false; }, 600);
                         }
                     } else {                                
                         // scrolling up
+                        if (scrollAmount <= 50) {
+                            // at top of screen
+                            if (mainNavEl.hasClass('slideInDown')) mainNavEl.removeClass('slideInDown');
+                            if (mainNavEl.hasClass('slideOutUp')) mainNavEl.removeClass('slideOutUp');
+                            mainNavEl.addClass('slideInDown');
+                            animationOccuring = true;
+                            setTimeout(function () { animationOccuring = false; }, 600);
+                        }
+
                         if (!animationOccuring) {
                             if (mainNavEl.hasClass('slideOutUp')) mainNavEl.removeClass('slideOutUp');
                             mainNavEl.addClass('slideInDown');
                             animationOccuring = true;
-                            setTimeout(function () { animationOccuring = false; }, 700);
+                            setTimeout(function () { animationOccuring = false; }, 600);
                         }
                     }
 
