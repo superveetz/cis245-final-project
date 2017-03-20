@@ -12,7 +12,7 @@
                     const w     = elem.width();
                     const h     = elem.height();
 
-                    ctx.strokeStyle     = 'rgba(174,194,224,0.5)';
+                    ctx.strokeStyle              = 'rgba(174,194,224,0.5)';
                     // ctx.strokeStyle              = 'rgba(0,0,0,1)';
                     ctx.lineWidth                = 0.5;
                     ctx.lineCap                  = 'round';
@@ -65,9 +65,6 @@
                     // register mousemove listener
                     let mousePositionRatio = 0;
                     elem.bind('mousemove', (event) => {
-                        console.log("event:", event);
-                        console.log("event.clientX:", event.clientX);
-                        console.log("event.clientX / elem.width():", event.clientX / elem.width());
                         mousePositionRatio = event.clientX / elem.width() - 0.5;
                         
                     });

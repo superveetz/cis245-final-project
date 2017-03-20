@@ -33,25 +33,25 @@
         // hook into onStateChangeStart event
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
             // cancel state transition if 1 is occuring already
-            if ($rootScope.stateChangeOccuring) return e.preventDefault(); 
+            // if ($rootScope.stateChangeOccuring) return e.preventDefault(); 
 
-            // disable any further state transitions
-            $rootScope.stateChangeOccuring = true;
+            // // disable any further state transitions
+            // $rootScope.stateChangeOccuring = true;
         });
 
         // hook into onStateChangeSuccess event
         $rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) {
             // scroll to top on page once state change transition starts
-            $location.hash(fromState.name);
-            $anchorScroll();
-            $location.hash('');
+            // $location.hash(fromState.name);
+            // $anchorScroll();
+            // $location.hash('');
             
 
             // wait for transitition animation to end after 1s
-            $timeout(() => {
-                // allow state changes
-                $rootScope.stateChangeOccuring = false;
-            }, 700);
+            // $timeout(() => {
+            //     // allow state changes
+            //     $rootScope.stateChangeOccuring = false;
+            // }, 700);
         });
         
     }])
