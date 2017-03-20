@@ -6,22 +6,44 @@
   
   .navbar-brand {
     font-size: 1.75em;
-    padding: 10px 15px;
-    line-height: 30px
+    padding: 10px 0 !important;
   }
 
-  .logo-brand h2 {
+  .logo-brand {
     display: inline-block;
-    font-size: 1em;
-    margin: 0;
-    padding: 0;
+    padding-left: 5px;
+    h2 {
+      display: block;
+      font-family: times, Times New Roman, times-roman, georgia, serif;
+      color: #0a3d9d;
+      margin: 0;
+      padding: 0;
+      font-size: 22px;
+      letter-spacing: -1px;
+      font-weight: bold;
+      line-height: 20px;
+    }
+    small {
+      display: block;
+      font-family: Gill Sans, Verdana;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+      letter-spacing: 0px;
+      font-weight: bold;
+      line-height: 10px;
+      color: #d97c0c;
+    }
   }
 
   .logo {
-    display: inline-block;
+    float: left;
+    display: block;
     width: 50px;
     height: 54px;
     padding-bottom: 20px;
+    margin: 0;
 
     img {
       height: 100%;
