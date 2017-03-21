@@ -410,11 +410,9 @@ a {
   height: 54px;
   padding-bottom: 20px;
   margin: 0;
-  pointer-events: none;
 }
 
 #main-nav .logo img {
-  pointer-events: none;
   height: 100%;
   width: 100%;
 }
@@ -435,9 +433,9 @@ a {
   -webkit-animation: slideOutLeft ease-out;
   -moz-animation: slideOutLeft ease-out;
   animation: slideOutLeft ease-out;
-  -webkit-animation-duration: 0.7s;
-  -moz-animation-duration: 0.7s;
-  animation-duration: 0.7s;
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  animation-duration: 0.5s;
   -webkit-animation-delay: 0.05s;
   animation-delay: 0.05s;
   z-index: 666;
@@ -448,9 +446,9 @@ a {
   -webkit-animation: slideInRight ease-out;
   -moz-animation: slideInRight ease-out;
   animation: slideInRight ease-out;
-  -webkit-animation-duration: 0.7s;
-  -moz-animation-duration: 0.7s;
-  animation-duration: 0.7s;
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  animation-duration: 0.5s;
   -webkit-animation-delay: 0.05s;
   animation-delay: 0.05s;
   z-index: 555;

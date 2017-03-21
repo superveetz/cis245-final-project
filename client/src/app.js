@@ -49,7 +49,7 @@
             $timeout(() => {
                 // allow state changes again
                 $rootScope.stateChangeOccuring = false;
-            }, 700);
+            }, 500);
         });
         
     }])
