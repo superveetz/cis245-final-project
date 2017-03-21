@@ -27,6 +27,25 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        <script>
+            // disable pinch/swipe effects in ios10
+            document.documentElement.addEventListener('touchstart', function (event) {
+                if (event.touches.length > 1) {
+                    event.preventDefault();
+                }
+            }, false);
+
+            // disable double-tap zoom effects in ios10
+            var lastTouchEnd = 0;
+            document.documentElement.addEventListener('touchend', function (event) {
+                var now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        </script>
         <base href="/">
     </head>
     <body scroll-disabled>
