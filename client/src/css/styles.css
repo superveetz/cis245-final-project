@@ -410,9 +410,11 @@ a {
   height: 54px;
   padding-bottom: 20px;
   margin: 0;
+  pointer-events: none;
 }
 
 #main-nav .logo img {
+  pointer-events: none;
   height: 100%;
   width: 100%;
 }
