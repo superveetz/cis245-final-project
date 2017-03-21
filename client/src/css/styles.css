@@ -1,5 +1,6 @@
 body.body-scroll-disabled {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   position: relative;
   box-sizing: border-box;
   margin: 0;
@@ -7,7 +8,8 @@ body.body-scroll-disabled {
 }
 
 html.html-scroll-disabled {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   position: fixed;
   height: 100%;
   margin: 0;
@@ -45,6 +47,7 @@ body {
 
 #app::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   -webkit-border-radius: 0px;
   border-radius: 0px;
   background: rgba(0, 0, 0, 0.7);
@@ -351,6 +354,15 @@ a {
   font-weight: bold;
   text-transform: uppercase;
 }
+#canvas-raining {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.text-vertical-center {
+  padding: 18% 0 !important;
+}
 #main-nav #top-nav {
   z-index: 999;
   -webkit-animation-duration: 0.5s;
@@ -406,15 +418,6 @@ a {
 #main-nav .logo img {
   height: 100%;
   width: 100%;
-}
-#canvas-raining {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.text-vertical-center {
-  padding: 18% 0 !important;
 }
 .main-wrap {
   position: relative;
