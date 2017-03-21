@@ -62,31 +62,37 @@
                 
                 elem.bind('scroll', function (event) {
                     const scrollAmount = elem.scrollTop();
-                    
+
                     if (scrollAmount > lastScrollAmount) {
                         // scrolling down 
                         if (!animationOccuring) {
-                            if (mainNavEl.hasClass('slideInDown')) mainNavEl.removeClass('slideInDown');
-                            mainNavEl.addClass('slideOutUp');
-                            animationOccuring = true;
-                            setTimeout(function () { animationOccuring = false; }, 600);
+                            if (!mainNavEl.hasClass('slideOutUp')) {
+                                if (mainNavEl.hasClass('slideInDown')) mainNavEl.removeClass('slideInDown');
+                                mainNavEl.addClass('slideOutUp');
+                                animationOccuring = true;
+                                setTimeout(function () { animationOccuring = false; }, 500);
+                            }
                         }
-                    } else {                                
+                    } else {
                         // scrolling up
-                        if (scrollAmount <= 50) {
-                            // at top of screen
-                            if (mainNavEl.hasClass('slideInDown')) mainNavEl.removeClass('slideInDown');
-                            if (mainNavEl.hasClass('slideOutUp')) mainNavEl.removeClass('slideOutUp');
-                            mainNavEl.addClass('slideInDown');
-                            animationOccuring = true;
-                            setTimeout(function () { animationOccuring = false; }, 600);
-                        }
-
                         if (!animationOccuring) {
+                            if (!mainNavEl.hasClass('slideInDown')) {
+                                if (mainNavEl.hasClass('slideOutUp')) mainNavEl.removeClass('slideOutUp');
+                                mainNavEl.addClass('slideInDown');
+                                animationOccuring = true;
+                                setTimeout(function () { animationOccuring = false; }, 500);
+                            }
+                        }
+                    }
+                                                    
+                    // always show nav at top of screen
+                    if (scrollAmount <= 50) {
+                        // at top of screen
+                        if (!mainNavEl.hasClass('slideInDown')) {
                             if (mainNavEl.hasClass('slideOutUp')) mainNavEl.removeClass('slideOutUp');
                             mainNavEl.addClass('slideInDown');
                             animationOccuring = true;
-                            setTimeout(function () { animationOccuring = false; }, 600);
+                            setTimeout(function () { animationOccuring = false; }, 500);
                         }
                     }
 
