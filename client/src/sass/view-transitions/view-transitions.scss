@@ -10,9 +10,9 @@
 
         &.ng-leave,
         &.ng-leave-active {
-            -webkit-animation: slideOutLeft ease-out;
-            -moz-animation: slideOutLeft ease-out;
-            animation: slideOutLeft ease-out;
+            -webkit-animation: slideOutLeft linear;
+            -moz-animation: slideOutLeft linear;
+            animation: slideOutLeft linear;
 
             -webkit-animation-duration: 0.5s;
             -moz-animation-duration: 0.5s;
@@ -26,9 +26,9 @@
         
         &.ng-enter,
         &.ng-enter-active {
-            -webkit-animation: slideInRight ease-out;
-            -moz-animation: slideInRight ease-out;
-            animation: slideInRight ease-out;
+            -webkit-animation: slideInRight linear;
+            -moz-animation: slideInRight linear;
+            animation: slideInRight linear;
 
             -webkit-animation-duration: 0.5s;
             -moz-animation-duration: 0.5s;
