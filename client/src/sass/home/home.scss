@@ -58,7 +58,7 @@
                 -webkit-transform: translateX(-50%);
                 -moz-transform: translateX(-50%);
                 transform: translateX(-50%);
-                background: linear-gradient(rgb(0,0,255) 0%, rgb(43,43,255) 10%, rgb(85,153,255) 30%, rgb(128,179,255) 35%, rgb(170,204,255) 45%, rgb(213,230,255) 50%, rgb(170,204,255) 55%, rgb(128,179,255) 65%, rgb(85,153,255) 70%, rgb(43,43,255) 90%, rgb(0,0,255) 100%);
+                background: linear-gradient(rgb(0,0,255) 0%, rgb(43,43,255) 10%, rgb(85,153,255) 30%, rgb(128,179,255) 35%, rgb(170,204,255) 45%, rgb(213,230,255) 50%, rgb(170,204,255) 60%, rgb(128,179,255) 65%, rgb(85,153,255) 70%, rgb(43,43,255) 90%, rgb(0,0,255) 100%);
                 -webkit-background-clip: text;
                 -moz-background-clip:text;
                 background-clip: text;
@@ -164,6 +164,7 @@
             font-size: 38px !important;
         }
         h3 {
+            margin-top: 10px !important;
             font-size: 26px !important;
         }
     }

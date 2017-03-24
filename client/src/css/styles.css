@@ -406,7 +406,7 @@ a {
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   transform: translateX(-50%);
-  background: linear-gradient(blue 0%, #2b2bff 10%, #5599ff 30%, #80b3ff 35%, #aaccff 45%, #d5e6ff 50%, #aaccff 55%, #80b3ff 65%, #5599ff 70%, #2b2bff 90%, blue 100%);
+  background: linear-gradient(blue 0%, #2b2bff 10%, #5599ff 30%, #80b3ff 35%, #aaccff 45%, #d5e6ff 50%, #aaccff 60%, #80b3ff 65%, #5599ff 70%, #2b2bff 90%, blue 100%);
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
@@ -487,6 +487,7 @@ a {
   }
 
   .text-vertical-center h3 {
+    margin-top: 10px !important;
     font-size: 26px !important;
   }
 }
