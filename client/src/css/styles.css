@@ -354,6 +354,62 @@ a {
   font-weight: bold;
   text-transform: uppercase;
 }
+#main-nav #top-nav {
+  z-index: 999;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+#main-nav .navbar-brand {
+  font-size: 1.75em;
+  padding: 10px 0 !important;
+}
+
+#main-nav .logo-brand {
+  display: inline-block;
+  padding-left: 5px;
+}
+
+#main-nav .logo-brand h2 {
+  display: block;
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+  color: #0a3d9d;
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  letter-spacing: -1px;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+#main-nav .logo-brand small {
+  display: block;
+  font-family: Gill Sans, Verdana;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -1.5px;
+  font-weight: bold;
+  line-height: 18px;
+  color: #d97c0c;
+}
+
+#main-nav .logo {
+  float: left;
+  display: block;
+  width: 50px;
+  height: 54px;
+  padding-bottom: 20px;
+  margin: 0;
+}
+
+#main-nav .logo img {
+  height: 100%;
+  width: 100%;
+}
 #canvas-raining {
   position: absolute;
   width: 100%;
@@ -491,62 +547,6 @@ a {
     font-size: 26px !important;
   }
 }
-#main-nav #top-nav {
-  z-index: 999;
-  -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-#main-nav .navbar-brand {
-  font-size: 1.75em;
-  padding: 10px 0 !important;
-}
-
-#main-nav .logo-brand {
-  display: inline-block;
-  padding-left: 5px;
-}
-
-#main-nav .logo-brand h2 {
-  display: block;
-  font-family: times, Times New Roman, times-roman, georgia, serif;
-  color: #0a3d9d;
-  margin: 0;
-  padding: 0;
-  font-size: 22px;
-  letter-spacing: -1px;
-  font-weight: bold;
-  line-height: 20px;
-}
-
-#main-nav .logo-brand small {
-  display: block;
-  font-family: Gill Sans, Verdana;
-  font-size: 12px;
-  text-transform: uppercase;
-  margin: 0;
-  padding: 0;
-  letter-spacing: -1.5px;
-  font-weight: bold;
-  line-height: 18px;
-  color: #d97c0c;
-}
-
-#main-nav .logo {
-  float: left;
-  display: block;
-  width: 50px;
-  height: 54px;
-  padding-bottom: 20px;
-  margin: 0;
-}
-
-#main-nav .logo img {
-  height: 100%;
-  width: 100%;
-}
 .main-wrap {
   position: relative;
   box-sizing: border-box;
@@ -566,9 +566,9 @@ a {
   -webkit-animation: slideOutLeft linear;
   -moz-animation: slideOutLeft linear;
   animation: slideOutLeft linear;
-  -webkit-animation-duration: 0.495s;
-  -moz-animation-duration: 0.495s;
-  animation-duration: 0.495s;
+  -webkit-animation-duration: 0.395s;
+  -moz-animation-duration: 0.395s;
+  animation-duration: 0.395s;
   -webkit-animation-delay: 0.05s;
   animation-delay: 0.05s;
   z-index: 555;
@@ -576,11 +576,14 @@ a {
 
 .main-wrap .main-view.ng-enter,
 .main-wrap .main-view.ng-enter-active {
+  visibility: hidden;
   -webkit-animation: slideInRight linear;
   -moz-animation: slideInRight linear;
   animation: slideInRight linear;
-  -webkit-animation-duration: 0.6s;
-  -moz-animation-duration: 0.6s;
-  animation-duration: 0.6s;
+  -webkit-animation-duration: 0.4s;
+  -moz-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-delay: 0.05s;
+  animation-delay: 0.05s;
   z-index: 666;
 }
