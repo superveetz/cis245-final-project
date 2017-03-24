@@ -8,20 +8,23 @@
         box-sizing: border-box;
         width: 100%;
 
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+
         &.ng-leave,
         &.ng-leave-active {
             -webkit-animation: slideOutLeft linear;
             -moz-animation: slideOutLeft linear;
             animation: slideOutLeft linear;
 
-            -webkit-animation-duration: 0.5s;
-            -moz-animation-duration: 0.5s;
-            animation-duration: 0.5s;
+            -webkit-animation-duration: 0.495s;
+            -moz-animation-duration: 0.495s;
+            animation-duration: 0.495s;
 
             -webkit-animation-delay: 0.05s;
             animation-delay: 0.05s;
 
-            z-index: 666;
+            z-index: 555;
         }
         
         &.ng-enter,
@@ -30,14 +33,14 @@
             -moz-animation: slideInRight linear;
             animation: slideInRight linear;
 
-            -webkit-animation-duration: 0.5s;
-            -moz-animation-duration: 0.5s;
-            animation-duration: 0.5s;
+            -webkit-animation-duration: 0.6s;
+            -moz-animation-duration: 0.6s;
+            animation-duration: 0.6s;
 
-            -webkit-animation-delay: 0.05s;
-            animation-delay: 0.05s;
+            // -webkit-animation-delay: 0.05s;
+            // animation-delay: 0.05s;
 
-            z-index: 555;
+            z-index: 666;
         }
     }
 }

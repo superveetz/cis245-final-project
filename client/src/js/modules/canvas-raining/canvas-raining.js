@@ -19,7 +19,7 @@
                     ctx.globalCompositeOperation ='destination-over';
 
                     var init = [];
-                    var maxParts = 1000;
+                    var maxParts = 2000;
                     for(var a = 0; a < maxParts; a++) {
                         init.push({
                             x: Math.random() * w,

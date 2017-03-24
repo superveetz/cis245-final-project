@@ -19,20 +19,6 @@
             templateUrl: '/js/directives/templates/main-footer/main-footer.html'
         };
     }])
-
-    .directive("scrollToTopWhen", ['$timeout', '$location', '$anchorScroll', function ($timeout, $location, $anchorScroll) {
-        return {
-            link: function (scope, elem, attrs) {
-                // scope.$on(attrs.scrollToTopWhen, () => {
-                //     $timeout(() => {
-                //         console.log('directive pop');
-                //         console.log("elem:", elem);
-                //         elem.scroll(0, 0);
-                //     });
-                // });
-            }
-        };
-    }])
     
     .directive('alertBox', ['AlertService', function (AlertService) {
         return {
