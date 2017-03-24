@@ -93,7 +93,7 @@
             }
 
             &:nth-child(1) {
-                color: saddlebrown;
+                color: #452209;
                 text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
             }
 
@@ -148,11 +148,11 @@
     .text-vertical-center {
         h1 {
             margin-top: 20px;
-            font-size: 28px !important;
+            font-size: 32px !important;
         }
         h3 {
             margin-top: 10px !important;
-            font-size: 22px !important;
+            font-size: 26px !important;
         }
     }
 }
@@ -161,10 +161,10 @@
 @media only screen and (max-width : 320px) {
     .text-vertical-center {
         h1 {
-            font-size: 20px !important;
+            font-size: 34px !important;
         }
         h3 {
-            font-size: 18px !important;
+            font-size: 22px !important;
         }
     }
 }
