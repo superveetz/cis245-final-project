@@ -1,5 +1,6 @@
 (function (angular) {
     angular.module('app.controllers', [
+        'app.services'
     ])
 
     .controller('MainNavCtrl', ['$rootScope', '$scope', '$firebaseAuth', '$http', '$window', '$state', '$timeout', 'ModalService', 'AlertService', function ($rootScope, $scope, $firebaseAuth, $http, $window, $state, $timeout, ModalService, AlertService) {
@@ -211,5 +212,27 @@
     
     .controller('AppCtrl', ['$rootScope', '$state', function ($rootScope, $state) {
         
+    }])
+    
+    .controller('HomeCtrl', ['$scope', '$document', '$location', '$state', 'smoothScroll', function ($scope, $document, $location, $state, smoothScroll) {
+        
+    }])
+    
+    .controller('ContactCtrl', ['$scope', '$http', 'AlertService', function ($scope, $http, AlertService) {
+        $scope.sendEmail = function () {
+            $scope.submitSendEmail = true;
+            $http({
+                method: 'POST',
+                url: '/api/send-email'
+            })
+            .finally(res => {
+                $scope.submitSendEmail = false;
+                AlertService.setAlert({
+                    type: 'success',
+                    show: true,
+                    title: 'Email sent. We will reply back to you as soon as we can.'
+                });
+            });
+        };
     }]);
 })(angular);

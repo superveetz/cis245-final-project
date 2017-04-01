@@ -1,6 +1,7 @@
 (function (angular) {
     // declare app and load dependencies
     angular.module('app', [
+        'smoothScroll',
         'firebase',
         'ui.router',
         'ui.bootstrap',
@@ -78,8 +79,7 @@
         .state('app.home', {
             url: '/',
             templateUrl: '/views/home/index.html',
-            controller: [function () {
-            }]
+            controller: 'HomeCtrl'
         })
         
         .state('app.about', {
@@ -94,7 +94,8 @@
         
         .state('app.contact', {
             url: '/contact',
-            templateUrl: '/views/contact/index.html'
+            templateUrl: '/views/contact/index.html',
+            controller: 'ContactCtrl'
         })
         .state('404', {
             url: '/404',
