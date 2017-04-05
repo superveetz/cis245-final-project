@@ -64,6 +64,15 @@
             return true;
         };
 
+        // open mobile side nav
+        $scope.openMobileSideNav = function () {
+            console.log('hiya');
+            
+            // using jasny bootstrap jquery api
+            $('#mobile-side-nav').offcanvas('show');
+            return true;
+        };
+
     }])
     
     .controller('LoginCtrl', ['$rootScope', '$firebaseAuth', '$scope', '$http', '$window', '$uibModalInstance', 'AlertService', function ($rootScope, $firebaseAuth, $scope, $http, $window, $uibModalInstance, AlertService, AuthService) {
