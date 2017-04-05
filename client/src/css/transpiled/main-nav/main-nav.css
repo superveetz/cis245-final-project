@@ -1,5 +1,6 @@
 #main-nav .navbar-header .navbar-toggle {
-  border: none !important; }
+  border: none !important;
+  margin-top: 9px !important; }
   #main-nav .navbar-header .navbar-toggle .icon-bar {
     background-color: black; }
   #main-nav .navbar-header .navbar-toggle:active, #main-nav .navbar-header .navbar-toggle:hover, #main-nav .navbar-header .navbar-toggle:focus {
@@ -39,7 +40,7 @@
     letter-spacing: -1.5px;
     font-weight: bold;
     line-height: 18px;
-    color: #d97c0c; }
+    color: #db7c0c; }
 
 #main-nav .logo {
   float: left;
