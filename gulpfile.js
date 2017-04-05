@@ -100,6 +100,7 @@ gulp.task('concat-vendor-js', function () {
     './client/src/bower_components/firebase/firebase.js',
     './client/src/bower_components/jquery/dist/jquery.min.js',
     './client/src/bower_components/bootstrap/dist/js/bootstrap.min.js',
+    './client/src/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js',
     './client/src/bower_components/async/dist/async.min.js',
     // angular vendor
     './client/src/bower_components/angular/angular.min.js',
