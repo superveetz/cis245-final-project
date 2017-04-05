@@ -1,3 +1,10 @@
+#main-nav .navbar-header .navbar-toggle {
+  border: none !important; }
+  #main-nav .navbar-header .navbar-toggle .icon-bar {
+    background-color: black; }
+  #main-nav .navbar-header .navbar-toggle:active, #main-nav .navbar-header .navbar-toggle:hover, #main-nav .navbar-header .navbar-toggle:focus {
+    background: none !important; }
+
 #main-nav #top-nav {
   z-index: 999;
   -webkit-animation-duration: 0.5s;

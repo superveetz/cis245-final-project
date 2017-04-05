@@ -16,7 +16,8 @@ html.html-scroll-disabled {
   border: none; }
 
 body {
-  padding: 0 !important; }
+  padding: 0 !important;
+  font-family: 'Source Sans Pro', sans-serif; }
 
 .modern-business-padding {
   padding-top: 50px; }

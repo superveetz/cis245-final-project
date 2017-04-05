@@ -33,7 +33,7 @@ $container['view'] = function ($c) {
 
 // wildcard GET route to force client side routing 
 $app->get('/[{param:.*}]', function (Request $request, Response $response) {
-    return $this->view->render($response, 'index.production.html');
+    return $this->view->render($response, 'index.html');
 })->setName('index');;
 
 // Create Data Models

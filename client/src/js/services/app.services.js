@@ -74,7 +74,6 @@
             },
             setAlert: function (alertObj) {
                 console.log("alertObj:", alertObj);
-                
 
                 // update alert 
                 alert = angular.copy(alertObj);  

@@ -1,4 +1,19 @@
 #main-nav {
+  .navbar-header {
+    .navbar-toggle {
+      border: none !important;
+      
+      .icon-bar {
+        background-color: black;
+      }
+
+      &:active,
+      &:hover,
+      &:focus {
+        background: none !important;
+      }
+    }
+  }
 
   #top-nav {
     z-index: 999;
