@@ -12,7 +12,14 @@
     pointer-events: none; }
   #header .text-vertical-center .landing-wrap {
     width: 50%;
-    margin-left: 5%; }
+    margin-left: 5%;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid ghostwhite;
+    padding-top: 4%;
+    padding-bottom: 4%; }
+    #header .text-vertical-center .landing-wrap a {
+      margin-top: 15px; }
     #header .text-vertical-center .landing-wrap h1 {
       position: relative;
       margin: 0;
@@ -23,7 +30,7 @@
         display: inline-block;
         font-family: 'Comfortaa', arial;
         -webkit-font-smoothing: antialiased;
-        text-shadow: rgba(0, 0, 0, 0.5) 2px 2px;
+        text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px, rgba(255, 255, 255, 0.5) 0 1px, rgba(0, 0, 0, 0.3) -1px -2px;
         color: #0855d1; }
         #header .text-vertical-center .landing-wrap h1 strong::selection {
           background: rgba(255, 255, 0, 0.4); }
@@ -44,7 +51,7 @@
         width: 100%;
         display: inline-block;
         -webkit-font-smoothing: antialiased;
-        text-shadow: rgba(0, 0, 0, 0.5) 2px 2px;
+        text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px, rgba(255, 255, 255, 0.5) 0 1px, rgba(0, 0, 0, 0.3) -1px -2px;
         color: #c43d08; }
         #header .text-vertical-center .landing-wrap h3 em::selection {
           background: rgba(235, 0, 235, 0.4); }

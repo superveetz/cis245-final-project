@@ -35,21 +35,26 @@ body {
   */
   /* Track */
   /* Handle */ }
-  #app::-webkit-scrollbar {
+  #app::-webkit-scrollbar, #app::-moz-scrollbar, #app::-ms-scrollbar {
     width: 12px;
     -webkit-appearance: none; }
-  #app::-webkit-scrollbar-track {
+  #app::-webkit-scrollbar-track, #app::-moz-scrollbar-track, #app::-ms-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -ms-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 0px;
     border-radius: 0px;
     background: rgba(0, 0, 0, 0.7); }
-  #app::-webkit-scrollbar-thumb {
+  #app::-webkit-scrollbar-thumb, #app::-moz-scrollbar-thumb, #app::-ms-scrollbar-thumb {
     -webkit-border-radius: 0px;
     border-radius: 0px;
     background: #0A95FF;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); }
-  #app::-webkit-scrollbar-thumb:window-inactive {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -ms-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); }
+  #app::-webkit-scrollbar-thumb:window-inactive, #app::-moz-scrollbar-thumb:window-inactive, #app::-ms-scrollbar-thumb:window-inactive {
     background: rgba(255, 255, 0, 0.7); }
 
 .btn {
