@@ -1,6 +1,3 @@
-[submodule "client/src/themes/startbootstrap-stylish-portfolio"]
-	path = client/src/themes/startbootstrap-stylish-portfolio
-	url = https://github.com/BlackrockDigital/startbootstrap-stylish-portfolio.git
 [submodule "client/src/themes/startbootstrap-modern-business"]
 	path = client/src/themes/startbootstrap-modern-business
 	url = https://github.com/BlackrockDigital/startbootstrap-modern-business.git

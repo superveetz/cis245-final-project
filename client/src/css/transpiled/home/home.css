@@ -42,23 +42,23 @@
       margin: 0;
       padding: 0;
       position: relative;
-      font-family: 'Source Sans Pro', sans-serif;
+      font-family: 'Raleway', sans-serif;
       font-size: 3em;
       font-weight: none; }
       #header .text-vertical-center .landing-wrap h3 em {
         font-style: normal;
-        font-weight: 400;
+        font-weight: none;
         width: 100%;
         display: inline-block;
         -webkit-font-smoothing: antialiased;
         text-shadow: rgba(0, 0, 0, 0.5) -1px 0, rgba(0, 0, 0, 0.3) 0 -1px, rgba(255, 255, 255, 0.5) 0 1px, rgba(0, 0, 0, 0.3) -1px -2px;
-        color: #c43d08; }
+        color: #ff6e00; }
         #header .text-vertical-center .landing-wrap h3 em::selection {
-          background: rgba(235, 0, 235, 0.4); }
+          background: rgba(150, 0, 150, 0.4); }
         #header .text-vertical-center .landing-wrap h3 em::-moz-selection {
-          background: rgba(235, 0, 235, 0.4); }
+          background: rgba(150, 0, 150, 0.4); }
         #header .text-vertical-center .landing-wrap h3 em::-webkit-selection {
-          background: rgba(235, 0, 235, 0.4); }
+          background: rgba(150, 0, 150, 0.4); }
 
 /*
  * About

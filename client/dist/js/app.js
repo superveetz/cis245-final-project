@@ -431,6 +431,13 @@
                 });
             }
         };
+    }]).directive('fadeInOnLoad', ['$timeout', function ($timeout) {
+        return {
+            restrict: 'A',
+            link: function link(scope, elem, attr) {
+                elem.addClass('animated fadeIn');
+            }
+        };
     }]);
 })(angular);
 'use strict';

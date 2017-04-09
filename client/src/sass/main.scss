@@ -42,17 +42,13 @@ body {
    * Simple Example of a custom scrollbar that works in most modern browsers.
    * taken from: - https://css-tricks.com/examples/WebKitScrollbars/ 
   */
-  &::-webkit-scrollbar,
-  &::-moz-scrollbar,
-  &::-ms-scrollbar {
+  &::-webkit-scrollbar {
       width: 12px;
       -webkit-appearance: none;
   }
   
   /* Track */
-  &::-webkit-scrollbar-track,
-  &::-moz-scrollbar-track,
-  &::-ms-scrollbar-track {
+  &::-webkit-scrollbar-track {
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
       -moz-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
       -ms-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -63,9 +59,7 @@ body {
   }
   
   /* Handle */
-  &::-webkit-scrollbar-thumb,
-  &::-moz-scrollbar-thumb,
-  &::-ms-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
       -webkit-border-radius: 0px;
       border-radius: 0px;
       background: $dodger-blue;
@@ -74,9 +68,7 @@ body {
       -ms-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
       box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
   }
-  &::-webkit-scrollbar-thumb:window-inactive,
-  &::-moz-scrollbar-thumb:window-inactive,
-  &::-ms-scrollbar-thumb:window-inactive {
+  &::-webkit-scrollbar-thumb:window-inactive {
     background: rgba(255,255,0,0.7); 
   }
 }

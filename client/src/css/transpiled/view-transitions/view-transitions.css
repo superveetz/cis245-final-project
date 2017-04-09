@@ -1,7 +1,8 @@
 .main-wrap {
   position: relative;
   box-sizing: border-box;
-  width: 100%; }
+  width: 100%;
+  margin-top: 50px; }
   .main-wrap .main-view {
     position: absolute;
     box-sizing: border-box;
